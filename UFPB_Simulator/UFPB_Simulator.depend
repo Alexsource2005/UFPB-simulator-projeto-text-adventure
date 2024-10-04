@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1728070075 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\main.c
+	<stdio.h>
+	<stdbool.h>
+	<locale.h>
+	"parsexec.h"
+
+1728068900 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\parsexec.c
+	<stdbool.h>
+	<stdio.h>
+	<string.h>
+	<locale.h>
+	"locais.h"
+
+1728046724 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\parsexec.h
+	<locale.h>
+
+1728070120 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\locais.c
+	<stdio.h>
+	<string.h>
+	<locale.h>
+
+1728068009 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\locais.h
+
