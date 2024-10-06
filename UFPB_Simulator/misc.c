@@ -11,6 +11,19 @@ tObjetos *ator_aqui(void) {
 }
 
 
+tObjetos *pega_passagem(tObjetos *origem, tObjetos *destino_f) { //verificar se certa passagem conecta dois dados locais; se houver, retorna um ponteiro para o objeto correpondente a ela.
+    if(origem != NULL && destino_f != NULL){
+        tObjetos *obj;
+        for(obj = lista_objetos; obj < fim_lista; obj++){
+            if(obj->local == origem && obj->destino == destino_f){
+                return obj;
+            }
+        }
+    }
+    return NULL;
+}
+
+
 void imprimir_objetos(tObjetos *obj, int *cont, const char *mensagem) {
     if (*cont == 0) {
         printf("%s\n", mensagem);
