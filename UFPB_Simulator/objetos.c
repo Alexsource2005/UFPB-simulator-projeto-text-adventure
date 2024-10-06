@@ -2,14 +2,14 @@
 #include "objetos.h"
 
 tObjetos lista_objetos[] = {
-    {"Um prédio generico com vasta concentração de distúrbios mentais\n", "ao Centro de informatica", NULL},
-    {"Um prédio alto com sérios problemas estruturais.\n uma nevóa densa cobre os corredores deste local... assustador\n", "ao Liepe", NULL},
-    {"Uma estrutura organizada feita de tijolos, com vários gatos ao redor.\n O único restaurante do campus se encontra aqui\n", "ao CTDR", NULL},
-    {"Uma lagoa de agua parada em uma clareira escondida nos matos.\n Voce sente uma vontade primitiva de jogar pedras lá dentro.\n", "ao poco da AIDS", NULL},
-    {"Um banheiro em que todas as privadas não tem assento.\n Pelo menos tem papel higienico...\n", "ao banheiro", NULL},
-    {"um cano PVC solitário em meio as flores.\n", "cano pvc", CTDR},
-    {"um jovem com uma sacola de cacarecos. Pode ser útil.", "jovem", AIDS},
-    {"Uma placa arduino UNO, parece estar em boas condições", "arduino", jovem},
-    {"Um notebook em cima de uma das mesas. não vão se importar se voce usar rapidamente, né?\n", "notebook", CI},
-    {"Você mesmo\n", "Você mesmo", CI}
+    {"um prÃ©dio generico com vasta concentraÃ§Ã£o de distÃºrbios mentais\n\n", "ao Centro de informatica", NULL},
+    {"um prÃ©dio alto com sÃ©rios problemas estruturais.\n uma nevÃ³a densa cobre os corredores deste local... assustador\n\n", "ao Liepe", NULL},
+    {"uma estrutura organizada feita de tijolos, com vÃ¡rios gatos ao redor.\n O Ãºnico restaurante do campus se encontra aqui\n\n", "ao CTDR", NULL},
+    {"uma lagoa de agua parada em uma clareira escondida nos matos.\n Voce sente uma vontade primitiva de jogar pedras lÃ¡ dentro.\n\n", "ao poco da AIDS", NULL},
+    {"um banheiro em que todas as privadas nÃ£o tem assento.\n Pelo menos tem papel higienico...\n\n", "ao banheiro", NULL},
+    {"um cano PVC solitÃ¡rio em meio as flores.\n", "pvc", CTDR},
+    {"um jovem com uma sacola de cacarecos. Pode ser Ãºtil.\n", "jovem", AIDS},
+    {"uma placa arduino UNO, parece estar em boas condiÃ§Ãµes\n", "arduino", jovem},
+    {"um notebook em cima de uma das mesas. nÃ£o vÃ£o se importar se voce usar rapidamente, nÃ©?\n", "notebook", CI},
+    {"vocÃª mesmo, apesar de tudo\n", "voce mesmo", CI}
 };
