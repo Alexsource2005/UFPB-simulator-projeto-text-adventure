@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "objetos.h"
+#include "misc.h"
 
 static bool objeto_tem_rotulo(tObjetos *obj, const char *substantivo) {
     return substantivo != NULL && *substantivo != '\0' && strcasecmp(substantivo, obj->rotulo) == 0; //compara oque foi escrito com os rotulos predefinidos
@@ -26,9 +27,10 @@ tObjetos *visivel_existe(const char *intencao, const char *substantivo) {
               obj == player->local || // o local em que o jogador atualmente está
               obj->local == player || // objetos que o jogador tem no inventário
               obj->local == player->local ||  //objetos presentes no mesmo local que o jogador
-              obj->local == NULL || // qualquer local que o jogador tenha acesso
-              obj->local->local == player || //objetos dentro de outro objeto que o jogador tem no inventário
-              obj->local->local == player->local)) // objetos dentro de outro objeto que está no mesmo local que o jogador
+              pega_passagem(player->local, obj) != NULL|| // qualquer local que o jogador tenha acesso
+              (obj->local != NULL &&
+              (obj->local->local == player ||
+              obj->local->local == player->local)))) // objetos dentro de outro objeto que está no mesmo local que o jogador
     {
         printf("Voce não vê nenhum %s aqui.\n", substantivo);
         obj = NULL;
