@@ -21,10 +21,19 @@ void exec_ir(const char* substantivo) {
 
     if(obj == NULL){
 
-    } else if(obj->local == NULL && obj != player->local){
+    } else if(pega_passagem(player->local, obj) != NULL){
         printf("OK.\n");
-        player->local = obj;
+      player->local = obj;
       exec_olhar("ao redor");
+
+    } else if(obj->local != player->local){
+        printf("Voce não vê nenhum %s aqui.\n", substantivo);
+
+    } else if(obj->descricao != NULL){
+        printf("OK.\n");
+        player->local = obj->destino;
+        exec_olhar("ao redor");
+
     } else {
         printf("Impossivel se aproximar mais que isso.\n");
     }
