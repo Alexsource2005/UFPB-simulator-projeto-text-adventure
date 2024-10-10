@@ -5,16 +5,6 @@
 #include "locais.h"
 #include "inventory.h"
 
-char *apenas_um_substantivo(char *substantivo, char *ultima_palavra){
-    char *token = strtok(substantivo, " "); // Divide o restante em palavras
-
-    while (token != NULL) {
-        ultima_palavra = token; // Armazena o último token
-        token = strtok(NULL, " "); // Continua pegando os tokens
-    }
-
-    return ultima_palavra;
-}
 
 bool comparaeExecuta(char *comando) {
     if (comando == NULL || strlen(comando) == 0) {
@@ -26,9 +16,6 @@ bool comparaeExecuta(char *comando) {
 
     char *verbo = strtok(comando, " \n"); // Obtém o verbo
     char *substantivo = strtok(NULL, "\n"); // Obtém o substantivo
-
-    char *ultima_palavra = NULL;
-
 
     if (verbo != NULL) {
         if (strcasecmp(verbo, "sair") == 0) {
@@ -46,46 +33,40 @@ bool comparaeExecuta(char *comando) {
 
 
         } else if (strcasecmp(verbo, "pegar") == 0) {
-           ultima_palavra = apenas_um_substantivo(substantivo, ultima_palavra);
-
-            if (ultima_palavra != NULL) {
-                exec_pegar(ultima_palavra);
+            if (substantivo != NULL) {
+                exec_pegar(substantivo);
             } else {
                 printf("O que você quer pegar?\n");
             }
 
 
         } else if (strcasecmp(verbo, "jogar") == 0) {
-            ultima_palavra = apenas_um_substantivo(substantivo, ultima_palavra);
-            if (ultima_palavra != NULL) {
-                exec_jogar(ultima_palavra);
+            if (substantivo != NULL) {
+                exec_jogar(substantivo);
             } else {
                 printf("O que você quer jogar?\n");
             }
 
 
         } else if (strcasecmp(verbo, "dar") == 0) {
-            ultima_palavra = apenas_um_substantivo(substantivo, ultima_palavra);
-            if (ultima_palavra != NULL) {
-                exec_dar(ultima_palavra);
+            if (substantivo != NULL) {
+                exec_dar(substantivo);
             } else {
                 printf("O que você quer dar?\n");
             }
 
 
         } else if (strcasecmp(verbo, "pedir") == 0) {
-            ultima_palavra = apenas_um_substantivo(substantivo, ultima_palavra);
-            if (ultima_palavra != NULL) {
-                exec_pedir(ultima_palavra);
+            if (substantivo != NULL) {
+                exec_pedir(substantivo);
             } else {
                 printf("O que você quer pedir?\n");
             }
 
 
         } else if (strcasecmp(verbo, "checar") == 0) {
-            ultima_palavra = apenas_um_substantivo(substantivo, ultima_palavra);
-            if (ultima_palavra != NULL) {
-                exec_checar(ultima_palavra);
+            if (substantivo != NULL) {
+                exec_checar(substantivo);
             } else {
                 printf("O que você quer checar?\n");
             }
