@@ -1,6 +1,6 @@
 typedef struct objeto {
     const char *descricao;
-    const char *rotulo;
+    const char **rotulo; // agora será uma lista de rótulos possiveis para cada objeto
     struct objeto *local; //ponteiro para o local onde o objeto se encontra
     struct objeto *destino; // exclusivo das passagens de local a local
 } tObjetos;
@@ -20,7 +20,7 @@ extern tObjetos lista_objetos[];
 
 // passagens
 #define into_liepe (lista_objetos + 10)
-#define exit_lipe (lista_objetos + 11)
+#define exit_liepe (lista_objetos + 11)
 #define into_ctdr (lista_objetos + 12)
 #define exit_ctdr (lista_objetos + 13)
 #define into_aids (lista_objetos + 14)
@@ -28,4 +28,11 @@ extern tObjetos lista_objetos[];
 #define into_banheiro (lista_objetos + 16)
 #define exit_banheiro (lista_objetos + 17)
 
-#define fim_lista (lista_objetos + 18) // aumentar o número conforme coloca mais objetos
+// "paredes" que impedem o jogador de continuar além do esperado
+#define block_ci (lista_objetos + 18)
+#define block_liepe (lista_objetos + 19)
+#define block_ctdr (lista_objetos + 20)
+#define block_aids (lista_objetos + 21)
+#define block_banheiro (lista_objetos + 22)
+
+#define fim_lista (lista_objetos + 23) // aumentar o número conforme coloca mais objetos
