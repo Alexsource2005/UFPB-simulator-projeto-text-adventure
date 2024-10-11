@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "objetos.h"
+#include "toggle.h"
 
 typedef struct objeto {
     const char *descricao;
@@ -13,7 +14,8 @@ typedef struct objeto {
     int peso; // peso de cada objeto
     int capacidade; // capacidade de carga de cada ator
     int vida; //não sei se será necessário, mas bora
-
+    void (*abrir)(void);
+    void (*fechar) (void);
 } tObjetos;
 
 extern tObjetos lista_objetos[];
@@ -94,6 +96,7 @@ extern tObjetos lista_objetos[];
      destino    Liepe
      detalhes   "Um sol escaldante bate por cima desse caminho, ainda bem que voce lembrou do protetor solar."
      texto_GO   "Você anda em direção do Liepe, com cuidado pra não tropeçar em alguma pedra solta."
+     abrir      ja_esta_aberto
 
 - exit_liepe
      descricao  "uma saída passando por uma rampa para cadeirantes, seguido de um barranco de pedras desniveladas ao sul"
@@ -102,6 +105,7 @@ extern tObjetos lista_objetos[];
      destino    CI
      detalhes   "você acha cômico a situação estrutural dessa rampa."
      texto_GO   "Você toma o caminho de volta ao CI, curtindo a calma momentânea."
+     abrir      ja_esta_aberto
 
 - into_ctdr
      descricao  "uma estrada reta até o CTDR ao leste"
@@ -110,6 +114,7 @@ extern tObjetos lista_objetos[];
      destino    CTDR
      detalhes   "Belas flores adornam esse caminho até a entrada da estrutura, que lugar bonito."
      texto_GO   "Você toma rumo ao CTDR, passando a mão em toda vegetação no caminho com um sorriso no rosto."
+     abrir      ja_esta_aberto
 
 - exit_ctdr
      descricao  "uma estrada reta até o Liepe ao oeste"
@@ -118,6 +123,7 @@ extern tObjetos lista_objetos[];
      destino    Liepe
      detalhes   "Belas flores adornam esse caminho até a entrada da estrutura, que lugar bonito."
      texto_GO   "No meio da sua caminhada ao Liepe, uma joaninha pousa em uma das flores e aquece seu coração."
+     abrir      ja_esta_aberto
 
 - into_aids
      descricao  "uma descida que leva diretamente para dentro da mata, ao sudoeste"
@@ -126,6 +132,7 @@ extern tObjetos lista_objetos[];
      destino    AIDS
      detalhes   "Você sente que tem algo por lá... Vale o risco."
      texto_GO   "Você, com só um pouco de receio, desce o barranco e segue mata adentro."
+     abrir      ja_esta_aberto
 
 - exit_aids
      descricao  "O caminho de volta até o liepe ao nordeste"
@@ -134,22 +141,45 @@ extern tObjetos lista_objetos[];
      destino    Liepe
      detalhes   "O caminho de volta é menos arriscado que o caminho de ida, isso com certeza."
      texto_GO   "você sobe de volta ao Liepe, sem nenhum arranhão."
+     abrir      ja_esta_aberto
 
-- into_banheiro
-     descricao  "A porta que dá ao banheiro do primeiro andar"
+- porta_aberta_para_banheiro
+     descricao  "a porta aberta que leva ao banheiro"
+     rotulos    "porta", "a porta"
+     destino    banheiro
+     detalhes   "A porta está aberta"
+     texto_GO   "Você passa pela porta."
+     abrir      ja_esta_aberto
+     fechar     troca_porta_banheiro
+
+- porta_fechada_para_banheiro
+     descricao  "a porta fechada que leva ao banheiro"
      rotulos    "porta", "a porta"
      local      Liepe
-     destino    banheiro
-     detalhes   "Apenas uma porta, nada demais."
-     texto_GO   "Você entra no banheiro."
+     aparente   banheiro
+     detalhes   "A porta está fechada."
+     texto_GO   "A porta está fechada."
+     abrir      troca_porta_banheiro
+     fechar     ja_esta_fechado
 
-- exit_banheiro
-     descricao  "A porta que leva de volta ao primeiro andar do liepe"
+- porta_aberta_para_liepe
+     descricao  "a porta aberta que leva ao Liepe"
+     rotulos    "porta", "a porta"
+     destino    Liepe
+     detalhes   "A porta está aberta."
+     texto_GO   "você retorna ao Liepe."
+     abrir      ja_esta_aberto
+     fechar     troca_porta_liepe
+
+- porta_fechada_para_liepe
+     descricao  "a porta fechada que leva ao Liepe"
      rotulos    "porta", "a porta"
      local      banheiro
-     destino    Liepe
-     detalhes   "Apenas uma porta, nada demais."
-     texto_GO   "Você sai do banheiro"
+     aparente   Liepe
+     detalhes   "A porta está fechada."
+     texto_GO   "A porta está fechada."
+     abrir      troca_porta_liepe
+     fechar     ja_esta_fechado
 
 - block_ci
      descricao  "Não tem nada para ver por aqui"
