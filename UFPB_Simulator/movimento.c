@@ -1,32 +1,50 @@
+#include <stdbool.h>
 #include <stdio.h>
 #include "objetos.h"
+#include "misc.h"
+
+static int peso_dos_conteudos(tObjetos *container) {
+    int soma = 0;
+    tObjetos *obj;
+    for(obj = lista_objetos; obj < fim_lista; obj++){
+        if(esta_segurando(container, obj))
+            soma += obj->peso;
+    }
+    return soma;
+}
 
 static void descreve_movimento(tObjetos *obj, tObjetos *destino) {
     if (destino == player->local) {
-        printf("Você jogou %s na fossa.\n", obj->rotulo);
-    } else if (destino == jovem) {
-        printf("Você dá %s %s.\n", obj->rotulo, destino->rotulo);
+        printf("VocÃª jogou %s na fossa.\n", obj->descricao);
+
+    } else if (destino != player) {
+        printf(destino->vida > 0 ? "VocÃª dÃ¡ %s para %s.\n" : "VocÃª coloca %s no %s.\n", obj->descricao, destino->descricao);
+
+    } else if(obj->local == player->local) {
+        printf("VocÃª pegou %s.\n", obj->descricao);
+
     } else {
-        printf("Você colocou %s em %s.\n", obj->rotulo, destino->rotulo);
+        printf("VocÃª pega %s do %s.\n", obj->descricao, obj->local->descricao);
     }
 }
 
+
 void mover_objeto(tObjetos *obj, tObjetos *destino) {
     if (obj == NULL) {
-        printf("Objeto não encontrado para mover.\n");
+        printf("Objeto nÃ£o encontrado para mover.\n");
         return; // Retorna imediatamente se obj for NULL
-    }
 
-    if (destino == NULL) {
-        printf("Não tem ninguém aqui para dar isto.\n");
+    } else if (destino == NULL) {
+        printf("NÃ£o tem ninguÃ©m aqui para dar isto.\n");
         return; // Retorna se destino for NULL
-    }
 
-    if (obj->local == NULL) {
-        printf("Isso é muito pesado para carregar.\n");
-        return; // Retorna se o objeto não tem um local definido
-    }
+    } else if(obj->peso > destino->capacidade){
+        printf("Isso Ã© muito pesado pra carregar.\n");
 
-    descreve_movimento(obj, destino);
-    obj->local = destino; // Move o objeto para o novo destino
+    } else if(obj->peso + peso_dos_conteudos(destino) > destino->capacidade){
+        printf("Isso excederia a capacidade.\n");
+    } else {
+        descreve_movimento(obj, destino);
+        obj->local = destino; // Move o objeto para o novo destino
+    }
 }
