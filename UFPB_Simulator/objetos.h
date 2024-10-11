@@ -11,7 +11,8 @@ typedef struct objeto {
     int peso; // peso de cada objeto
     int capacidade; // capacidade de carga de cada ator
     int vida; //não sei se será necessário, mas bora
-
+    void (*abrir)(void);
+    void (*fechar) (void);
 } tObjetos;
 
 extern tObjetos lista_objetos[];
@@ -32,12 +33,14 @@ extern tObjetos lista_objetos[];
 #define exit_ctdr	(lista_objetos + 13)
 #define into_aids	(lista_objetos + 14)
 #define exit_aids	(lista_objetos + 15)
-#define into_banheiro	(lista_objetos + 16)
-#define exit_banheiro	(lista_objetos + 17)
-#define block_ci	(lista_objetos + 18)
-#define block_liepe	(lista_objetos + 19)
-#define block_ctdr	(lista_objetos + 20)
-#define block_aids	(lista_objetos + 21)
-#define block_banheiro	(lista_objetos + 22)
+#define porta_aberta_para_banheiro	(lista_objetos + 16)
+#define porta_fechada_para_banheiro	(lista_objetos + 17)
+#define porta_aberta_para_liepe	(lista_objetos + 18)
+#define porta_fechada_para_liepe	(lista_objetos + 19)
+#define block_ci	(lista_objetos + 20)
+#define block_liepe	(lista_objetos + 21)
+#define block_ctdr	(lista_objetos + 22)
+#define block_aids	(lista_objetos + 23)
+#define block_banheiro	(lista_objetos + 24)
 
-#define fim_lista	(lista_objetos + 23)
+#define fim_lista	(lista_objetos + 25)
