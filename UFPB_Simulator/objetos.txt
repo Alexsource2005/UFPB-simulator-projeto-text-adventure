@@ -1,0 +1,187 @@
+#include <stdio.h>
+#include "objetos.h"
+
+typedef struct objeto {
+    const char *descricao;
+    const char **rotulos; // agora será uma lista de rótulos possiveis para cada objeto
+    struct objeto *local; //ponteiro para o local onde o objeto se encontra
+    struct objeto *destino; // exclusivo das passagens de local a local
+    struct objeto *aparente; // exclusivo para passagens que levam a locais inesperados ou que serão bloqueados
+    const char *detalhes; // detalhes que aparecerão ao examinar um objeto de perto
+    const char *conteudo; // para objetos que irão conter outro objeto
+    const char *texto_GO; //mensagem fofa única para cada local
+    int peso; // peso de cada objeto
+    int capacidade; // capacidade de carga de cada ator
+    int vida; //não sei se será necessário, mas bora
+
+} tObjetos;
+
+extern tObjetos lista_objetos[];
+
+- CI
+     descricao  "um prédio generico com vasta concentração de distúrbios mentais"
+     rotulos    "centro de informatica", "ci", "ao ci", "ao centro de informatica"
+     detalhes   "Este é o centro de informática. Todas as aulas com respeito a computação acontecem aqui.\n Você sente sono só de imaginar."
+     capacidade 9999
+
+- Liepe
+     descricao "um prédio de dois andares com sérios problemas estruturais"
+     rotulos   "ao liepe", "liepe"
+     detalhes  "Estamos no Liepe. Uma aura sinistra envolve esse lugar como névoa em um jogo de terror... \nAssustador."
+     capacidade 9999
+
+- CTDR
+     descricao  "uma estrutura organizada feita de tijolos, com vários gatos ao redor"
+     rotulos    "ao ctdr", "ctdr"
+     detalhes   "Estamos no CTDR, O único restaurante do campus se encontra aqui. \nBelas flores adornam os solos deste local, além de ventos constantes. Eles te enchem de serenidade."
+     capacidade 9999
+
+- AIDS
+     descricao  "uma lagoa de agua parada em uma clareira escondida nos matos"
+     rotulos    "ao poco da aids", "poco da aids"
+     detalhes   "Você encara a fossa aberta e sente uma vontade primitiva de jogar algo lá dentro."
+     capacidade 9999
+
+- banheiro
+     descricao  "um banheiro em que todas as privadas não tem assento"
+     rotulos    "ao banheiro", "banheiro"
+     detalhes   "A privacidade repentina estranhamente te acalma. \nPelo menos tem papel higienico."
+     capacidade 9999
+
+- pvc
+     descricao "um cano PVC"
+     rotulos   "cano pvc", "pvc", "cano", "o cano pvc", "o cano"
+     local     CTDR
+     detalhes  "Um cano PVC solitário em meio às flores. \nPode ser reutilizado para confeccionar estruturas rígidas."
+     peso      1
+
+- jovem
+     descricao  "um jovem magricela com uma sacola de cacarecos"
+     rotulos    "jovem", "ao jovem", "com o jovem", "jovem magricela", "ao jovem magricela", "com o jovem magricela"
+     local      AIDS
+     detalhes   "O jovem está em completo silêncio encarando a fossa, hipnotizado. \nTalvez, ele esteja disposto a te dar algo útil."
+     conteudo   "Ele tem"
+     vida       100
+     capacidade 20
+
+- arduino
+     descricao  "uma placa arduino UNO em boas condições"
+     rotulos    "arduino", "o arduino"
+     local      jovem
+     detalhes   "Esse arduino será perfeito para confeccionar a parte elétrica do seu rôbo."
+     peso       1
+
+- notebook
+     descricao  "um notebook sem supervisão"
+     rotulos    "notebook", "o notebook"
+     local      CI
+     detalhes   "Nimguém está por perto... Não se importariam se você usar esse notebook rapidinho, né?"
+     peso       999
+
+- player
+     descricao  "você mesmo"
+     rotulos    "voce", "voce mesmo", "si", "si proprio"
+     local      CI
+     detalhes   "Apesar de tudo oque ocorreu, continua sendo você."
+     conteudo   "você tem"
+     vida       100
+     capacidade 20
+
+- into_liepe
+     descricao  "um caminho úmido de concreto ao nordeste"
+     rotulos    "caminho", "ao caminho", "nordeste", "caminho umido", "ao caminho umido", "norte", "leste"
+     local      CI
+     destino    Liepe
+     detalhes   "Um sol escaldante bate por cima desse caminho, ainda bem que voce lembrou do protetor solar."
+     texto_GO   "Você anda em direção do Liepe, com cuidado pra não tropeçar em alguma pedra solta."
+
+- exit_liepe
+     descricao  "uma saída passando por uma rampa para cadeirantes, seguido de um barranco de pedras desniveladas ao sul"
+     rotulos    "saida", "a saida", "sul"
+     local      Liepe
+     destino    CI
+     detalhes   "você acha cômico a situação estrutural dessa rampa."
+     texto_GO   "Você toma o caminho de volta ao CI, curtindo a calma momentânea."
+
+- into_ctdr
+     descricao  "uma estrada reta até o CTDR ao leste"
+     rotulos    "estrada", "a estrada", "leste"
+     local      Liepe
+     destino    CTDR
+     detalhes   "Belas flores adornam esse caminho até a entrada da estrutura, que lugar bonito."
+     texto_GO   "Você toma rumo ao CTDR, passando a mão em toda vegetação no caminho com um sorriso no rosto."
+
+- exit_ctdr
+     descricao  "uma estrada reta até o Liepe ao oeste"
+     rotulos    "estrada", "a estrada", "leste"
+     local      CTDR
+     destino    Liepe
+     detalhes   "Belas flores adornam esse caminho até a entrada da estrutura, que lugar bonito."
+     texto_GO   "No meio da sua caminhada ao Liepe, uma joaninha pousa em uma das flores e aquece seu coração."
+
+- into_aids
+     descricao  "uma descida que leva diretamente para dentro da mata, ao sudoeste"
+     rotulos    "descida", "a descida", "sudoeste", "sul", "leste"
+     local      Liepe
+     destino    AIDS
+     detalhes   "Você sente que tem algo por lá... Vale o risco."
+     texto_GO   "Você, com só um pouco de receio, desce o barranco e segue mata adentro."
+
+- exit_aids
+     descricao  "O caminho de volta até o liepe ao nordeste"
+     rotulos    "caminho", "o caminho", "nordeste", "norte", "leste"
+     local      AIDS
+     destino    Liepe
+     detalhes   "O caminho de volta é menos arriscado que o caminho de ida, isso com certeza."
+     texto_GO   "você sobe de volta ao Liepe, sem nenhum arranhão."
+
+- into_banheiro
+     descricao  "A porta que dá ao banheiro do primeiro andar"
+     rotulos    "porta", "a porta"
+     local      Liepe
+     destino    banheiro
+     detalhes   "Apenas uma porta, nada demais."
+     texto_GO   "Você entra no banheiro."
+
+- exit_banheiro
+     descricao  "A porta que leva de volta ao primeiro andar do liepe"
+     rotulos    "porta", "a porta"
+     local      banheiro
+     destino    Liepe
+     detalhes   "Apenas uma porta, nada demais."
+     texto_GO   "Você sai do banheiro"
+
+- block_ci
+     descricao  "Não tem nada para ver por aqui"
+     rotulos    "sul", "sudoeste", "sudeste", "oeste", "noroeste", "pra fora"
+     local      CI
+     detalhes   "Além daqui só a rua que leva à rua principal e à entrada do submundo, além do local de equitação. \nNada de seu interesse."
+     texto_GO   "Você não tem motivo pra vir por aqui."
+
+- block_liepe
+     descricao  "Apenas paredes de concreto"
+     rotulos    "norte", "nordeste", "noroeste"
+     local      Liepe
+     detalhes   "As paredes de concreto são bem rígidas"
+     texto_GO   "As paredes te impedem de seguir por aqui."
+
+- block_ctdr
+     descricao  "Nada de interesse além daqui"
+     rotulos    "leste", "norte", "sul", "nordeste", "noroeste", "sudoeste", "sudeste"
+     local      CTDR
+     detalhes   "Mata densa cobre os limites do CTDR."
+     texto_GO   "A mata não te permite passar por aqui."
+
+- block_aids
+     descricao  "Mata densa por todo lugar"
+     rotulos    "oeste", "sul", "sudeste","sudoeste", "mato", "mata", "alem"
+     local      AIDS
+     detalhes   "Mata densa está por todos os seus arredores."
+     texto_GO   "Você não quer ir por aí... Você ainda tem amor a própria vida."
+
+- block_banheiro
+     descricao  "Nada além disso"
+     rotulos    "norte", "sul", "leste", "oeste", "nordeste", "noroeste", "sudeste", "sudoeste"
+     local      banheiro
+     detalhes   "É só um banheiro, não tem nada além disso."
+     texto_GO   "Você dá de cara com a parede. Deixa de ser besta."
