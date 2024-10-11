@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "objetos.h"
+#include "toggle.h"
 static const char *tags0[] = { "centro de informatica", "ci", "ao ci", "ao centro de informatica", NULL};
 static const char *tags1[] = { "ao liepe", "liepe", NULL};
 static const char *tags2[] = { "ao ctdr", "ctdr", NULL};
@@ -18,11 +19,13 @@ static const char *tags14[] = { "descida", "a descida", "sudoeste", "sul", "lest
 static const char *tags15[] = { "caminho", "o caminho", "nordeste", "norte", "leste", NULL};
 static const char *tags16[] = { "porta", "a porta", NULL};
 static const char *tags17[] = { "porta", "a porta", NULL};
-static const char *tags18[] = { "sul", "sudoeste", "sudeste", "oeste", "noroeste", "pra fora", NULL};
-static const char *tags19[] = { "norte", "nordeste", "noroeste", NULL};
-static const char *tags20[] = { "leste", "norte", "sul", "nordeste", "noroeste", "sudoeste", "sudeste", NULL};
-static const char *tags21[] = { "oeste", "sul", "sudeste","sudoeste", "mato", "mata", "alem", NULL};
-static const char *tags22[] = { "norte", "sul", "leste", "oeste", "nordeste", "noroeste", "sudeste", "sudoeste", NULL};
+static const char *tags18[] = { "porta", "a porta", NULL};
+static const char *tags19[] = { "porta", "a porta", NULL};
+static const char *tags20[] = { "sul", "sudoeste", "sudeste", "oeste", "noroeste", "pra fora", NULL};
+static const char *tags21[] = { "norte", "nordeste", "noroeste", NULL};
+static const char *tags22[] = { "leste", "norte", "sul", "nordeste", "noroeste", "sudoeste", "sudeste", NULL};
+static const char *tags23[] = { "oeste", "sul", "sudeste","sudoeste", "mato", "mata", "alem", NULL};
+static const char *tags24[] = { "norte", "sul", "leste", "oeste", "nordeste", "noroeste", "sudeste", "sudoeste", NULL};
 
 tObjetos lista_objetos[] = {
 	{	/* 0 = CI */
@@ -36,7 +39,9 @@ tObjetos lista_objetos[] = {
 		"Voce nao pode se aproximar mais que isso.",
 		99,
 		 9999,
-		0
+		0,
+		nao_pode_ser_aberto,
+		nao_pode_ser_fechado
 	},
 	{	/* 1 = Liepe */
 		 "um prédio de dois andares com sérios problemas estruturais",
@@ -49,7 +54,9 @@ tObjetos lista_objetos[] = {
 		"Voce nao pode se aproximar mais que isso.",
 		99,
 		 9999,
-		0
+		0,
+		nao_pode_ser_aberto,
+		nao_pode_ser_fechado
 	},
 	{	/* 2 = CTDR */
 		 "uma estrutura organizada feita de tijolos, com vários gatos ao redor",
@@ -62,7 +69,9 @@ tObjetos lista_objetos[] = {
 		"Voce nao pode se aproximar mais que isso.",
 		99,
 		 9999,
-		0
+		0,
+		nao_pode_ser_aberto,
+		nao_pode_ser_fechado
 	},
 	{	/* 3 = AIDS */
 		 "uma lagoa de agua parada em uma clareira escondida nos matos",
@@ -75,7 +84,9 @@ tObjetos lista_objetos[] = {
 		"Voce nao pode se aproximar mais que isso.",
 		99,
 		 9999,
-		0
+		0,
+		nao_pode_ser_aberto,
+		nao_pode_ser_fechado
 	},
 	{	/* 4 = banheiro */
 		 "um banheiro em que todas as privadas não tem assento",
@@ -88,7 +99,9 @@ tObjetos lista_objetos[] = {
 		"Voce nao pode se aproximar mais que isso.",
 		99,
 		 9999,
-		0
+		0,
+		nao_pode_ser_aberto,
+		nao_pode_ser_fechado
 	},
 	{	/* 5 = pvc */
 		 "um cano PVC",
@@ -101,7 +114,9 @@ tObjetos lista_objetos[] = {
 		"Voce nao pode se aproximar mais que isso.",
 		 1,
 		0,
-		0
+		0,
+		nao_pode_ser_aberto,
+		nao_pode_ser_fechado
 	},
 	{	/* 6 = jovem */
 		 "um jovem magricela com uma sacola de cacarecos",
@@ -114,7 +129,9 @@ tObjetos lista_objetos[] = {
 		"Voce nao pode se aproximar mais que isso.",
 		99,
 		 20,
-		 100
+		 100,
+		nao_pode_ser_aberto,
+		nao_pode_ser_fechado
 	},
 	{	/* 7 = arduino */
 		 "uma placa arduino UNO em boas condições",
@@ -127,7 +144,9 @@ tObjetos lista_objetos[] = {
 		"Voce nao pode se aproximar mais que isso.",
 		 1,
 		0,
-		0
+		0,
+		nao_pode_ser_aberto,
+		nao_pode_ser_fechado
 	},
 	{	/* 8 = notebook */
 		 "um notebook sem supervisão",
@@ -140,7 +159,9 @@ tObjetos lista_objetos[] = {
 		"Voce nao pode se aproximar mais que isso.",
 		 999,
 		0,
-		0
+		0,
+		nao_pode_ser_aberto,
+		nao_pode_ser_fechado
 	},
 	{	/* 9 = player */
 		 "você mesmo",
@@ -153,7 +174,9 @@ tObjetos lista_objetos[] = {
 		"Voce nao pode se aproximar mais que isso.",
 		99,
 		 20,
-		 100
+		 100,
+		nao_pode_ser_aberto,
+		nao_pode_ser_fechado
 	},
 	{	/* 10 = into_liepe */
 		 "um caminho úmido de concreto ao nordeste",
@@ -166,7 +189,9 @@ tObjetos lista_objetos[] = {
 		 "Você anda em direção do Liepe, com cuidado pra não tropeçar em alguma pedra solta.",
 		99,
 		0,
-		0
+		0,
+		 ja_esta_aberto,
+		nao_pode_ser_fechado
 	},
 	{	/* 11 = exit_liepe */
 		 "uma saída passando por uma rampa para cadeirantes, seguido de um barranco de pedras desniveladas ao sul",
@@ -179,7 +204,9 @@ tObjetos lista_objetos[] = {
 		 "Você toma o caminho de volta ao CI, curtindo a calma momentânea.",
 		99,
 		0,
-		0
+		0,
+		 ja_esta_aberto,
+		nao_pode_ser_fechado
 	},
 	{	/* 12 = into_ctdr */
 		 "uma estrada reta até o CTDR ao leste",
@@ -192,7 +219,9 @@ tObjetos lista_objetos[] = {
 		 "Você toma rumo ao CTDR, passando a mão em toda vegetação no caminho com um sorriso no rosto.",
 		99,
 		0,
-		0
+		0,
+		 ja_esta_aberto,
+		nao_pode_ser_fechado
 	},
 	{	/* 13 = exit_ctdr */
 		 "uma estrada reta até o Liepe ao oeste",
@@ -205,7 +234,9 @@ tObjetos lista_objetos[] = {
 		 "No meio da sua caminhada ao Liepe, uma joaninha pousa em uma das flores e aquece seu coração.",
 		99,
 		0,
-		0
+		0,
+		 ja_esta_aberto,
+		nao_pode_ser_fechado
 	},
 	{	/* 14 = into_aids */
 		 "uma descida que leva diretamente para dentro da mata, ao sudoeste",
@@ -218,7 +249,9 @@ tObjetos lista_objetos[] = {
 		 "Você, com só um pouco de receio, desce o barranco e segue mata adentro.",
 		99,
 		0,
-		0
+		0,
+		 ja_esta_aberto,
+		nao_pode_ser_fechado
 	},
 	{	/* 15 = exit_aids */
 		 "O caminho de volta até o liepe ao nordeste",
@@ -231,37 +264,73 @@ tObjetos lista_objetos[] = {
 		 "você sobe de volta ao Liepe, sem nenhum arranhão.",
 		99,
 		0,
-		0
+		0,
+		 ja_esta_aberto,
+		nao_pode_ser_fechado
 	},
-	{	/* 16 = into_banheiro */
-		 "A porta que dá ao banheiro do primeiro andar",
+	{	/* 16 = porta_aberta_para_banheiro */
+		 "A porta aberta que leva ao banheiro",
 		tags16,
-		 Liepe,
+		NULL,
 		 banheiro,
 		 banheiro,
-		 "Apenas uma porta, nada demais.",
+		 "A porta está aberta",
 		". Voce ve",
-		 "Você entra no banheiro.",
+		 "Você passa pela porta.",
 		99,
 		0,
-		0
+		0,
+		 ja_esta_aberto,
+		 troca_porta_banheiro
 	},
-	{	/* 17 = exit_banheiro */
-		 "A porta que leva de volta ao primeiro andar do liepe",
+	{	/* 17 = porta_fechada_para_banheiro */
+		 "A porta fechada que leva ao banheiro",
 		tags17,
+		 Liepe,
+		NULL,
 		 banheiro,
-		 Liepe,
-		 Liepe,
-		 "Apenas uma porta, nada demais.",
+		 "A porta está fechada.",
 		". Voce ve",
-		 "Você sai do banheiro",
+		 "A porta está fechada.",
 		99,
 		0,
-		0
+		0,
+		 troca_porta_banheiro,
+		 ja_esta_fechado
 	},
-	{	/* 18 = block_ci */
-		 "Não tem nada para ver por aqui",
+	{	/* 18 = porta_aberta_para_liepe */
+		 "A porta aberta que leva ao Liepe",
 		tags18,
+		NULL,
+		 Liepe,
+		 Liepe,
+		 "A porta está aberta.",
+		". Voce ve",
+		 "você retorna ao Liepe.",
+		99,
+		0,
+		0,
+		 ja_esta_aberto,
+		 troca_porta_liepe
+	},
+	{	/* 19 = porta_fechada_para_liepe */
+		 "A porta fechada que leva ao Liepe",
+		tags19,
+		 banheiro,
+		NULL,
+		 Liepe,
+		 "A porta está fechada.",
+		". Voce ve",
+		 "A porta está fechada.",
+		99,
+		0,
+		0,
+		 troca_porta_liepe,
+		 ja_esta_fechado
+	},
+	{	/* 20 = block_ci */
+		 "Não tem nada para ver por aqui",
+		tags20,
 		 CI,
 		NULL,
 		NULL,
@@ -270,11 +339,13 @@ tObjetos lista_objetos[] = {
 		 "Você não tem motivo pra vir por aqui.",
 		99,
 		0,
-		0
+		0,
+		nao_pode_ser_aberto,
+		nao_pode_ser_fechado
 	},
-	{	/* 19 = block_liepe */
+	{	/* 21 = block_liepe */
 		 "Apenas paredes de concreto",
-		tags19,
+		tags21,
 		 Liepe,
 		NULL,
 		NULL,
@@ -283,11 +354,13 @@ tObjetos lista_objetos[] = {
 		 "As paredes te impedem de seguir por aqui.",
 		99,
 		0,
-		0
+		0,
+		nao_pode_ser_aberto,
+		nao_pode_ser_fechado
 	},
-	{	/* 20 = block_ctdr */
+	{	/* 22 = block_ctdr */
 		 "Nada de interesse além daqui",
-		tags20,
+		tags22,
 		 CTDR,
 		NULL,
 		NULL,
@@ -296,11 +369,13 @@ tObjetos lista_objetos[] = {
 		 "A mata não te permite passar por aqui.",
 		99,
 		0,
-		0
+		0,
+		nao_pode_ser_aberto,
+		nao_pode_ser_fechado
 	},
-	{	/* 21 = block_aids */
+	{	/* 23 = block_aids */
 		 "Mata densa por todo lugar",
-		tags21,
+		tags23,
 		 AIDS,
 		NULL,
 		NULL,
@@ -309,11 +384,13 @@ tObjetos lista_objetos[] = {
 		 "Você não quer ir por aí... Você ainda tem amor a própria vida.",
 		99,
 		0,
-		0
+		0,
+		nao_pode_ser_aberto,
+		nao_pode_ser_fechado
 	},
-	{	/* 22 = block_banheiro */
+	{	/* 24 = block_banheiro */
 		 "Nada além disso",
-		tags22,
+		tags24,
 		 banheiro,
 		NULL,
 		NULL,
@@ -322,6 +399,8 @@ tObjetos lista_objetos[] = {
 		 "Você dá de cara com a parede. Deixa de ser besta.",
 		99,
 		0,
-		0
+		0,
+		nao_pode_ser_aberto,
+		nao_pode_ser_fechado
 	}
 };
