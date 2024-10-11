@@ -4,6 +4,7 @@
 #include <locale.h>
 #include "locais.h"
 #include "inventory.h"
+#include "abrir_fechar.h"
 
 
 bool comparaeExecuta(char *comando) {
@@ -71,6 +72,19 @@ bool comparaeExecuta(char *comando) {
                 printf("O que você quer checar?\n");
             }
 
+        } else if(strcasecmp(verbo, "abrir") == 0){
+            if(substantivo != NULL) {
+                exec_abrir(substantivo);
+            } else {
+                printf("O que você quer tentar abrir?\n");
+            }
+
+        } else if(strcasecmp(verbo, "fechar") == 0) {
+            if(substantivo != NULL) {
+                exec_fechar(substantivo);
+            } else {
+                printf("O que você quer tentar fechar?");
+            }
 
         } else {
             printf("Eu não sei '%s'.\n", verbo);
