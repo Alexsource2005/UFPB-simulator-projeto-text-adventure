@@ -1,52 +1,327 @@
 #include <stdio.h>
 #include "objetos.h"
-
-static char const *tags0[] = {"centro de informatica", "ci", "ao ci", "ao centro de informatica", NULL};
-static char const *tags1[] = {"ao liepe", "liepe", NULL};
-static char const *tags2[] = {"ao ctdr", "ctdr", NULL};
-static char const *tags3[] = {"ao poco da aids", "poco da aids", NULL};
-static char const *tags4[] = {"ao banheiro", "banheiro", NULL};
-static char const *tags5[] = {"cano pvc", "pvc", "cano", "o cano pvc", "o cano", NULL};
-static char const *tags6[] = {"jovem", "ao jovem", "com o jovem", "jovem magricela", "ao jovem magricela", "com o jovem magricela", NULL};
-static char const *tags7[] = {"arduino", "o arduino", NULL};
-static char const *tags8[] = {"notebook", "o notebook", NULL};
-static char const *tags9[] = {"voce", "voce mesmo", "si", "si proprio", NULL};
-static char const *tags10[] = {"caminho", "ao caminho", "nordeste", "caminho umido", "ao caminho umido", "norte", "leste", NULL};
-static char const *tags11[] = {"saida", "a saida", "sul", NULL};
-static char const *tags12[] = {"estrada", "a estrada", "leste", NULL};
-static char const *tags13[] = {"estrada", "a estrada", "oeste", NULL};
-static char const *tags14[] = {"descida", "a descida", "sudoeste", "sul", "leste", NULL};
-static char const *tags15[] = {"caminho", "o caminho", "nordeste", "norte", "leste", NULL};
-static char const *tags16[] = {"porta", "a porta", NULL};
-static char const *tags17[] = {"porta", "a porta", NULL};
-static char const *tags18[] = {"sul", "sudoeste", "sudeste", "oeste", "noroeste", "pra fora", NULL};
-static char const *tags19[] = {"norte", "nordeste", "noroeste", NULL};
-static char const *tags20[] = {"leste", "norte", "sul", "nordeste", "noroeste", "sudoeste", "sudeste", NULL};
-static char const *tags21[] = {"oeste", "sul", "sudeste","sudoeste", "mato", "mata", "alem", NULL};
-static char const *tags22[] = {"norte", "sul", "leste", "oeste", "nordeste", "noroeste", "sudeste", "sudoeste", NULL};
+static const char *tags0[] = { "centro de informatica", "ci", "ao ci", "ao centro de informatica", NULL};
+static const char *tags1[] = { "ao liepe", "liepe", NULL};
+static const char *tags2[] = { "ao ctdr", "ctdr", NULL};
+static const char *tags3[] = { "ao poco da aids", "poco da aids", NULL};
+static const char *tags4[] = { "ao banheiro", "banheiro", NULL};
+static const char *tags5[] = { "cano pvc", "pvc", "cano", "o cano pvc", "o cano", NULL};
+static const char *tags6[] = { "jovem", "ao jovem", "com o jovem", "jovem magricela", "ao jovem magricela", "com o jovem magricela", NULL};
+static const char *tags7[] = { "arduino", "o arduino", NULL};
+static const char *tags8[] = { "notebook", "o notebook", NULL};
+static const char *tags9[] = { "voce", "voce mesmo", "si", "si proprio", NULL};
+static const char *tags10[] = { "caminho", "ao caminho", "nordeste", "caminho umido", "ao caminho umido", "norte", "leste", NULL};
+static const char *tags11[] = { "saida", "a saida", "sul", NULL};
+static const char *tags12[] = { "estrada", "a estrada", "leste", NULL};
+static const char *tags13[] = { "estrada", "a estrada", "leste", NULL};
+static const char *tags14[] = { "descida", "a descida", "sudoeste", "sul", "leste", NULL};
+static const char *tags15[] = { "caminho", "o caminho", "nordeste", "norte", "leste", NULL};
+static const char *tags16[] = { "porta", "a porta", NULL};
+static const char *tags17[] = { "porta", "a porta", NULL};
+static const char *tags18[] = { "sul", "sudoeste", "sudeste", "oeste", "noroeste", "pra fora", NULL};
+static const char *tags19[] = { "norte", "nordeste", "noroeste", NULL};
+static const char *tags20[] = { "leste", "norte", "sul", "nordeste", "noroeste", "sudoeste", "sudeste", NULL};
+static const char *tags21[] = { "oeste", "sul", "sudeste","sudoeste", "mato", "mata", "alem", NULL};
+static const char *tags22[] = { "norte", "sul", "leste", "oeste", "nordeste", "noroeste", "sudeste", "sudoeste", NULL};
 
 tObjetos lista_objetos[] = {
-    {"um prédio generico com vasta concentração de distúrbios mentais.\n", tags0, NULL, NULL},
-    {"um prédio alto com sérios problemas estruturais.\n", tags1, NULL, NULL},
-    {"uma estrutura organizada feita de tijolos, com vários gatos ao redor.\n", tags2, NULL, NULL},
-    {"uma lagoa de agua parada em uma clareira escondida nos matos.\n", tags3, NULL, NULL},
-    {"um banheiro em que todas as privadas não tem assento.\n", tags4, NULL, NULL},
-    {"um cano PVC solitário em meio as flores.\n", tags5, CTDR, NULL},
-    {"um jovem magricela com uma sacola de cacarecos.\n", tags6, AIDS, NULL},
-    {"uma placa arduino UNO em boas condições\n", tags7, jovem, NULL},
-    {"um notebook em cima de uma das mesas.\n", tags8, CI, NULL},
-    {"você mesmo, apesar de tudo\n", tags9, CI, NULL},
-    {"um caminho úmido de concreto ao nordeste\n", tags10, CI, Liepe},
-    {"uma saída passando por uma rampa para cadeirantes, seguido de um barranco de pedras desniveladas ao sul.\n", tags11, Liepe, CI},
-    {"uma estrada reta até o CTDR ao leste.\n", tags12, Liepe, CTDR},
-    {"uma estrada reta até o Liepe ao oeste.\n", tags13, CTDR, Liepe},
-    {"uma descida que leva diretamente para dentro da mata, ao sudoeste.\n", tags14, Liepe, AIDS},
-    {"O caminho de volta até o liepe ao nordeste.\n", tags15, AIDS, Liepe},
-    {"A porta que dá ao banheiro do primeiro andar.\n", tags16, Liepe, banheiro},
-    {"A porta que leva de volta ao primeiro andar do liepe.\n", tags17, banheiro, Liepe},
-    {"Não tem nada além disso.\n", tags18, CI, NULL},
-    {"Apenas paredes de concreto.\n", tags19, Liepe, NULL},
-    {"Nada de interesse além disso.\n", tags20, CTDR, NULL},
-    {"Mata densa por todo lugar.\n", tags21, AIDS, NULL},
-    {"Nada além disso.\n", tags22, banheiro, NULL}
+	{	/* 0 = CI */
+		 "um prédio generico com vasta concentração de distúrbios mentais",
+		tags0,
+		NULL,
+		NULL,
+		NULL,
+		 "Este é o centro de informática. Todas as aulas com respeito a computação acontecem aqui.\n Você sente sono só de imaginar.",
+		". Voce ve",
+		"Voce nao pode se aproximar mais que isso.",
+		99,
+		 9999,
+		0
+	},
+	{	/* 1 = Liepe */
+		 "um prédio de dois andares com sérios problemas estruturais",
+		tags1,
+		NULL,
+		NULL,
+		NULL,
+		 "Estamos no Liepe. Uma aura sinistra envolve esse lugar como névoa em um jogo de terror... \nAssustador.",
+		". Voce ve",
+		"Voce nao pode se aproximar mais que isso.",
+		99,
+		 9999,
+		0
+	},
+	{	/* 2 = CTDR */
+		 "uma estrutura organizada feita de tijolos, com vários gatos ao redor",
+		tags2,
+		NULL,
+		NULL,
+		NULL,
+		 "Estamos no CTDR, O único restaurante do campus se encontra aqui. \nBelas flores adornam os solos deste local, além de ventos constantes. Eles te enchem de serenidade.",
+		". Voce ve",
+		"Voce nao pode se aproximar mais que isso.",
+		99,
+		 9999,
+		0
+	},
+	{	/* 3 = AIDS */
+		 "uma lagoa de agua parada em uma clareira escondida nos matos",
+		tags3,
+		NULL,
+		NULL,
+		NULL,
+		 "Você encara a fossa aberta e sente uma vontade primitiva de jogar algo lá dentro.",
+		". Voce ve",
+		"Voce nao pode se aproximar mais que isso.",
+		99,
+		 9999,
+		0
+	},
+	{	/* 4 = banheiro */
+		 "um banheiro em que todas as privadas não tem assento",
+		tags4,
+		NULL,
+		NULL,
+		NULL,
+		 "A privacidade repentina estranhamente te acalma. \nPelo menos tem papel higienico.",
+		". Voce ve",
+		"Voce nao pode se aproximar mais que isso.",
+		99,
+		 9999,
+		0
+	},
+	{	/* 5 = pvc */
+		 "um cano PVC",
+		tags5,
+		 CTDR,
+		NULL,
+		NULL,
+		 "Um cano PVC solitário em meio às flores. \nPode ser reutilizado para confeccionar estruturas rígidas.",
+		". Voce ve",
+		"Voce nao pode se aproximar mais que isso.",
+		 1,
+		0,
+		0
+	},
+	{	/* 6 = jovem */
+		 "um jovem magricela com uma sacola de cacarecos",
+		tags6,
+		 AIDS,
+		NULL,
+		NULL,
+		 "O jovem está em completo silêncio encarando a fossa, hipnotizado. \nTalvez, ele esteja disposto a te dar algo útil.",
+		 "Ele tem",
+		"Voce nao pode se aproximar mais que isso.",
+		99,
+		 20,
+		 100
+	},
+	{	/* 7 = arduino */
+		 "uma placa arduino UNO em boas condições",
+		tags7,
+		 jovem,
+		NULL,
+		NULL,
+		 "Esse arduino será perfeito para confeccionar a parte elétrica do seu rôbo.",
+		". Voce ve",
+		"Voce nao pode se aproximar mais que isso.",
+		 1,
+		0,
+		0
+	},
+	{	/* 8 = notebook */
+		 "um notebook sem supervisão",
+		tags8,
+		 CI,
+		NULL,
+		NULL,
+		 "Nimguém está por perto... Não se importariam se você usar esse notebook rapidinho, né?",
+		". Voce ve",
+		"Voce nao pode se aproximar mais que isso.",
+		 999,
+		0,
+		0
+	},
+	{	/* 9 = player */
+		 "você mesmo",
+		tags9,
+		 CI,
+		NULL,
+		NULL,
+		 "Apesar de tudo oque ocorreu, continua sendo você.",
+		 "você tem",
+		"Voce nao pode se aproximar mais que isso.",
+		99,
+		 20,
+		 100
+	},
+	{	/* 10 = into_liepe */
+		 "um caminho úmido de concreto ao nordeste",
+		tags10,
+		 CI,
+		 Liepe,
+		 Liepe,
+		 "Um sol escaldante bate por cima desse caminho, ainda bem que voce lembrou do protetor solar.",
+		". Voce ve",
+		 "Você anda em direção do Liepe, com cuidado pra não tropeçar em alguma pedra solta.",
+		99,
+		0,
+		0
+	},
+	{	/* 11 = exit_liepe */
+		 "uma saída passando por uma rampa para cadeirantes, seguido de um barranco de pedras desniveladas ao sul",
+		tags11,
+		 Liepe,
+		 CI,
+		 CI,
+		 "você acha cômico a situação estrutural dessa rampa.",
+		". Voce ve",
+		 "Você toma o caminho de volta ao CI, curtindo a calma momentânea.",
+		99,
+		0,
+		0
+	},
+	{	/* 12 = into_ctdr */
+		 "uma estrada reta até o CTDR ao leste",
+		tags12,
+		 Liepe,
+		 CTDR,
+		 CTDR,
+		 "Belas flores adornam esse caminho até a entrada da estrutura, que lugar bonito.",
+		". Voce ve",
+		 "Você toma rumo ao CTDR, passando a mão em toda vegetação no caminho com um sorriso no rosto.",
+		99,
+		0,
+		0
+	},
+	{	/* 13 = exit_ctdr */
+		 "uma estrada reta até o Liepe ao oeste",
+		tags13,
+		 CTDR,
+		 Liepe,
+		 Liepe,
+		 "Belas flores adornam esse caminho até a entrada da estrutura, que lugar bonito.",
+		". Voce ve",
+		 "No meio da sua caminhada ao Liepe, uma joaninha pousa em uma das flores e aquece seu coração.",
+		99,
+		0,
+		0
+	},
+	{	/* 14 = into_aids */
+		 "uma descida que leva diretamente para dentro da mata, ao sudoeste",
+		tags14,
+		 Liepe,
+		 AIDS,
+		 AIDS,
+		 "Você sente que tem algo por lá... Vale o risco.",
+		". Voce ve",
+		 "Você, com só um pouco de receio, desce o barranco e segue mata adentro.",
+		99,
+		0,
+		0
+	},
+	{	/* 15 = exit_aids */
+		 "O caminho de volta até o liepe ao nordeste",
+		tags15,
+		 AIDS,
+		 Liepe,
+		 Liepe,
+		 "O caminho de volta é menos arriscado que o caminho de ida, isso com certeza.",
+		". Voce ve",
+		 "você sobe de volta ao Liepe, sem nenhum arranhão.",
+		99,
+		0,
+		0
+	},
+	{	/* 16 = into_banheiro */
+		 "A porta que dá ao banheiro do primeiro andar",
+		tags16,
+		 Liepe,
+		 banheiro,
+		 banheiro,
+		 "Apenas uma porta, nada demais.",
+		". Voce ve",
+		 "Você entra no banheiro.",
+		99,
+		0,
+		0
+	},
+	{	/* 17 = exit_banheiro */
+		 "A porta que leva de volta ao primeiro andar do liepe",
+		tags17,
+		 banheiro,
+		 Liepe,
+		 Liepe,
+		 "Apenas uma porta, nada demais.",
+		". Voce ve",
+		 "Você sai do banheiro",
+		99,
+		0,
+		0
+	},
+	{	/* 18 = block_ci */
+		 "Não tem nada para ver por aqui",
+		tags18,
+		 CI,
+		NULL,
+		NULL,
+		 "Além daqui só a rua que leva à rua principal e à entrada do submundo, além do local de equitação. \nNada de seu interesse.",
+		". Voce ve",
+		 "Você não tem motivo pra vir por aqui.",
+		99,
+		0,
+		0
+	},
+	{	/* 19 = block_liepe */
+		 "Apenas paredes de concreto",
+		tags19,
+		 Liepe,
+		NULL,
+		NULL,
+		 "As paredes de concreto são bem rígidas",
+		". Voce ve",
+		 "As paredes te impedem de seguir por aqui.",
+		99,
+		0,
+		0
+	},
+	{	/* 20 = block_ctdr */
+		 "Nada de interesse além daqui",
+		tags20,
+		 CTDR,
+		NULL,
+		NULL,
+		 "Mata densa cobre os limites do CTDR.",
+		". Voce ve",
+		 "A mata não te permite passar por aqui.",
+		99,
+		0,
+		0
+	},
+	{	/* 21 = block_aids */
+		 "Mata densa por todo lugar",
+		tags21,
+		 AIDS,
+		NULL,
+		NULL,
+		 "Mata densa está por todos os seus arredores.",
+		". Voce ve",
+		 "Você não quer ir por aí... Você ainda tem amor a própria vida.",
+		99,
+		0,
+		0
+	},
+	{	/* 22 = block_banheiro */
+		 "Nada além disso",
+		tags22,
+		 banheiro,
+		NULL,
+		NULL,
+		 "É só um banheiro, não tem nada além disso.",
+		". Voce ve",
+		 "Você dá de cara com a parede. Deixa de ser besta.",
+		99,
+		0,
+		0
+	}
 };
