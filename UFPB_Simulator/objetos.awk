@@ -20,7 +20,9 @@ BEGIN {
    prop["texto_GO"] = "\"Voce nao pode se aproximar mais que isso.\"";
    prop["peso"] = "99";
    prop["capacidade"] = "0";
-   prop["vida"] = "0";		
+   prop["vida"] = "0";	
+   prop["abrir"]        = "nao_pode_ser_aberto";
+   prop["fechar"]       = "nao_pode_ser_fechado";
 }
 
 obj && /^[ \t]+[a-z]/ {
@@ -66,7 +68,9 @@ function outputRecord(separator)
 	 print "\t\t" prop["texto_GO"] ",";
 	 print "\t\t" prop["peso"] ",";
 	 print "\t\t" prop["capacidade"] ",";
-	 print "\t\t" prop["vida"];
+	 print "\t\t" prop["vida"] ",";
+	 print "\t\t" prop["abrir"] ",";
+         print "\t\t" prop["fechar"];
 	 print "\t}" separator;
          delete prop;
       }
