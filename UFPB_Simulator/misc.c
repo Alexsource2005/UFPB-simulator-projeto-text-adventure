@@ -1,10 +1,16 @@
 #include <stdio.h>
+#include <stdbool.h>
 #include "objetos.h"
+#include "misc.h"
+
+bool esta_segurando(tObjetos *container, tObjetos *obj) { //uma função auxiliar para indicar se um objeto está contido em algum lugar (jogador ou uma bolsa)
+    return obj != NULL && obj->local == container;
+}
 
 tObjetos *ator_aqui(void) {
     tObjetos *obj;
     for(obj = lista_objetos; obj < fim_lista; obj++){
-        if(obj->local == player->local && obj == jovem)
+        if(esta_segurando(player->local, obj) && obj != player && obj->vida > 0)
             return obj;
     }
     return NULL;
@@ -15,14 +21,27 @@ tObjetos *pega_passagem(tObjetos *origem, tObjetos *destino_f) { //verificar se 
     if(origem != NULL && destino_f != NULL){
         tObjetos *obj;
         for(obj = lista_objetos; obj < fim_lista; obj++){
-            if(obj->local == origem && obj->destino == destino_f){
+            if(esta_segurando(destino_f, obj) && obj->aparente == destino_f){
                 return obj;
+
             }
         }
     }
     return NULL;
 }
 
+tDistancia pega_distancia(tObjetos *origem, tObjetos *destino){
+    return destino == NULL ? dist_objetoNaoReconhecido :
+            destino == origem ? dist_SiProprio :
+            destino->local == origem ? dist_Posse :
+            destino == origem->local ? dist_Local :
+            destino->local == origem->local ? dist_Aqui :
+            pega_passagem(origem->local, destino) != NULL ? dist_AliDoLado :
+            destino->local == NULL ? dist_NaoAqui :
+            destino->local->local == origem ? dist_PosseContido :
+            destino->local->local == origem->local ? dist_AquiContido :
+                dist_NaoAqui;
+}
 
 void imprimir_objetos(tObjetos *obj, int *cont, const char *mensagem) {
     if (*cont == 0) {
@@ -35,26 +54,17 @@ void imprimir_objetos(tObjetos *obj, int *cont, const char *mensagem) {
 
 int lista_objetos_presentes(tObjetos *local_atual) {
     int cont = 0;
+    tObjetos *obj;
 
-    if (local_atual != player && local_atual != NULL) {
-        for (tObjetos *obj = lista_objetos; obj < fim_lista; obj++) {
-            if (obj != player && obj->local == local_atual) {
-                imprimir_objetos(obj, &cont, "Você vê:");
-            }
-        }
-    } else if (local_atual == NULL) {
-        for (tObjetos *obj = lista_objetos; obj < fim_lista; obj++) {
-            if (obj != player && obj->local == NULL) {
-                imprimir_objetos(obj, &cont, "Locais acessiveis:");
-            }
-        }
-    } else {
-        for (tObjetos *obj = lista_objetos; obj < fim_lista; obj++) {
-            if (obj != player && obj->local == local_atual) {
-                imprimir_objetos(obj, &cont, "Você possui em seus bolsos:");
-            }
-        }
-    }
-
+   for (obj = lista_objetos; obj < fim_lista; obj++) {
+      if (obj != player && esta_segurando(local_atual, obj))
+      {
+         if (cont++ == 0)
+         {
+            printf("%s:\n", local_atual->conteudo);
+         }
+         printf("- %s\n", obj->descricao);
+      }
+   }
     return cont; // retorna o número de objetos no local
 }
