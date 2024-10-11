@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
 #include "objetos.h"
 #include "misc.h"
 #include "substantivo.h"
@@ -7,19 +9,34 @@
 void exec_pegar(char *substantivo){
     tObjetos *obj = visivel_existe("Oque voce quer pegar", substantivo); //verificar se o objeto existe no sistema e se é visivel ao jogador
 
-    if(obj == NULL){
+    switch(pega_distancia(player, obj))
+    {
+    case dist_SiProprio:
+        printf("Você não deveria fazer isso com você mesmo.\n");
+        break;
 
-    } else if(obj == player){
-        printf("Não faça isso consigo mesmo.\n");
+    case dist_Posse:
+        printf("Você já tem %s em seus bolsos.\n", obj->descricao);
+        break;
 
-    } else if(obj->local == player){
-        printf("Você já está em posse desse objeto.\n");
+    case dist_AliDoLado:
+        printf("Tá muito longe, se aproxime para poder pegar.\n");
+        break;
 
-    } else if(obj->local == jovem) {
-        printf("Você deveria falar %s antes de pegar algo que não te pertence.", obj->local->rotulo);
+    case dist_objetoNaoReconhecido:
+        // a função visivel_existe já lida com isso
+      break;
 
-    } else {
-        mover_objeto(obj, player); //implementar função de mudar local do objeto
+    default:
+        if (obj->local != NULL && obj->local->vida > 0) //condição de ter vida maior que 0 identifica se o local que o objeto se encontra é um NPC
+      {
+         printf("Você deveria pedir ao %s antes de pegar algo que não te pertence.\n", obj->local->descricao);
+      }
+      else
+      {
+         mover_objeto(obj, player);
+      }
+
     }
 }
 
