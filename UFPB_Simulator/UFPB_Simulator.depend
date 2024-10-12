@@ -1,24 +1,100 @@
 # depslib dependency file v1.0
-1728070075 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\main.c
+1728077975 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\main.c
 	<stdio.h>
 	<stdbool.h>
 	<locale.h>
 	"parsexec.h"
 
-1728068900 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\parsexec.c
+1728683126 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\parsexec.c
 	<stdbool.h>
 	<stdio.h>
 	<string.h>
 	<locale.h>
 	"locais.h"
+	"inventory.h"
+	"abrir_fechar.h"
 
-1728046724 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\parsexec.h
+1728688528 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\parsexec.h
 	<locale.h>
 
-1728070120 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\locais.c
+1728662174 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\locais.c
+	<stdbool.h>
 	<stdio.h>
 	<string.h>
 	<locale.h>
+	"objetos.h"
+	"misc.h"
+	"substantivo.h"
 
 1728068009 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\locais.h
+
+1728682600 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\objetos.c
+	<stdio.h>
+	"objetos.h"
+	"toggle.h"
+
+1728682599 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\objetos.h
+
+1728665724 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\misc.c
+	<stdio.h>
+	<stdbool.h>
+	"objetos.h"
+	"misc.h"
+
+1728408229 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\misc.h
+	<stdbool.h>
+
+1728140989 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\substantivo.h
+
+1728612451 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\substantivo.c
+	<stdbool.h>
+	<stdio.h>
+	<string.h>
+	"objetos.h"
+	"misc.h"
+
+1728663334 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\inventory.c
+	<stdio.h>
+	<stdbool.h>
+	<string.h>
+	"objetos.h"
+	"misc.h"
+	"substantivo.h"
+	"movimento.h"
+
+1728138666 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\movimento.h
+
+1728138176 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\inventory.h
+
+1728663039 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\movimento.c
+	<stdbool.h>
+	<stdio.h>
+	"objetos.h"
+	"misc.h"
+
+1728683303 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\toggle.c
+	<stdio.h>
+	<stdbool.h>
+	"objetos.h"
+
+1728679167 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\abrir_fechar.c
+	<stdio.h>
+	<stdbool.h>
+	"objetos.h"
+	"alcance.h"
+
+1728681463 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\alcance.h
+
+1728678578 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\toggle.h
+
+1728682762 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\alcance.c
+	<stdio.h>
+	<stdbool.h>
+	"objetos.h"
+	"misc.h"
+	"substantivo.h"
+
+1728679167 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\abrir_fechar.h
+
+1728690375 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\comparar.c
 
