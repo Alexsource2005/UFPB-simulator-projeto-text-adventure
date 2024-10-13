@@ -5,9 +5,10 @@
 #include "misc.h"
 #include "substantivo.h"
 #include "movimento.h"
+#include "comparar.h"
 
-void exec_pegar(char *substantivo){
-    tObjetos *obj = visivel_existe("Oque voce quer pegar", substantivo); //verificar se o objeto existe no sistema e se é visivel ao jogador
+bool exec_pegar(void){
+    tObjetos *obj = visivel_existe("Oque voce quer pegar", parametros[0]); //verificar se o objeto existe no sistema e se é visivel ao jogador
 
     switch(pega_distancia(player, obj))
     {
@@ -38,40 +39,35 @@ void exec_pegar(char *substantivo){
       }
 
     }
+    return true;
 }
 
-void exec_jogar(char *substantivo){
+
+bool exec_jogar(void){
     if(player->local == AIDS)
-        mover_objeto(pega_possesao(player, "jogar", substantivo), AIDS); //em teoria isso é só pra jogar pedras na fossa
+        mover_objeto(pega_possesao(player, "jogar", parametros[0]), AIDS); //só pra jogar algo na fossa (pedras)
     else
         printf("Não tem local adequado para jogar esse objeto.\n");
+    return true;
 }
 
 
-void exec_pedir(char *substantivo){
-    mover_objeto(pega_possesao(ator_aqui(), "pedir", substantivo), player); //implementar
+bool exec_pedir(void){
+    mover_objeto(pega_possesao(ator_aqui(), "pedir", parametros[0]), player);
+    return true;
 }
 
-void exec_dar(char *substantivo) {
-    mover_objeto(pega_possesao(player, "dar", substantivo), ator_aqui()); //implementar
+bool exec_dar(void) {
+    mover_objeto(pega_possesao(player, "dar", parametros[0]), ator_aqui());
+    return true;
 }
 
-void exec_checar(char *substantivo){
-    if(strcasecmp(substantivo, "inventario") == 0){
-        if(lista_objetos_presentes(player) == 0)
-            printf("Voce não tem nada nos bolsos.\n");
-        else
-            lista_objetos_presentes(player);
-
-    } else if(strcasecmp(substantivo, "mapa") == 0) {
-        lista_objetos_presentes(NULL);
-
-    } else {
-        tObjetos *obj = visivel_existe("Oque voce quer checar", substantivo);
-        if(obj == NULL) {
-
-        } else {
-            printf("se trata de %s", obj->descricao);
-        }
-    }
+bool exec_inventario(void)
+{
+   if (lista_objetos_presentes(player) == 0)
+   {
+      printf("Você não tem nada nos bolsos.\n");
+   }
+   return true;
 }
+
