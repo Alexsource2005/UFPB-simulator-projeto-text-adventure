@@ -1,2 +1,3 @@
-extern void exec_ir(const char* substantivo);
-extern void exec_olhar(const char* substantivo);
+extern bool exec_ir(void);
+extern bool exec_olhar(void);
+extern bool exec_olhar_aoredor(void);
