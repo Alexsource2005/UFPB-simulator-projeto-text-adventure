@@ -5,11 +5,13 @@
 	<locale.h>
 	"parsexec.h"
 
-1728683126 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\parsexec.c
-	<stdbool.h>
+1728690414 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\parsexec.c
+	<ctype.h>
 	<stdio.h>
-	<string.h>
-	<locale.h>
+	<stdbool.h>
+	"objetos.h"
+	"misc.h"
+	"comparar.h"
 	"locais.h"
 	"inventory.h"
 	"abrir_fechar.h"
@@ -17,7 +19,7 @@
 1728688528 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\parsexec.h
 	<locale.h>
 
-1728662174 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\locais.c
+1728699998 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\locais.c
 	<stdbool.h>
 	<stdio.h>
 	<string.h>
@@ -25,8 +27,9 @@
 	"objetos.h"
 	"misc.h"
 	"substantivo.h"
+	"comparar.h"
 
-1728068009 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\locais.h
+1728699704 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\locais.h
 
 1728682600 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\objetos.c
 	<stdio.h>
@@ -53,7 +56,7 @@
 	"objetos.h"
 	"misc.h"
 
-1728663334 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\inventory.c
+1728699685 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\inventory.c
 	<stdio.h>
 	<stdbool.h>
 	<string.h>
@@ -61,10 +64,11 @@
 	"misc.h"
 	"substantivo.h"
 	"movimento.h"
+	"comparar.h"
 
 1728138666 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\movimento.h
 
-1728138176 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\inventory.h
+1728699685 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\inventory.h
 
 1728663039 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\movimento.c
 	<stdbool.h>
@@ -77,11 +81,12 @@
 	<stdbool.h>
 	"objetos.h"
 
-1728679167 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\abrir_fechar.c
+1728699685 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\abrir_fechar.c
 	<stdio.h>
 	<stdbool.h>
 	"objetos.h"
 	"alcance.h"
+	"comparar.h"
 
 1728681463 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\alcance.h
 
@@ -94,7 +99,15 @@
 	"misc.h"
 	"substantivo.h"
 
-1728679167 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\abrir_fechar.h
+1728699685 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\abrir_fechar.h
 
-1728690375 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\comparar.c
+1728699725 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\comparar.c
+	<ctype.h>
+	<stdbool.h>
+	<string.h>
+	"objetos.h"
+	"misc.h"
+	"comparar.h"
+
+1728699685 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\comparar.h
 
