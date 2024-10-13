@@ -7,7 +7,7 @@
 static bool objeto_tem_rotulo(tObjetos *obj, const char *substantivo) {
    if(substantivo != NULL && *substantivo != '\0'){ // verificando se o substantivo não é vazio ou apenas um "enter"
         const char **rotulo;
-        for(rotulo = obj->rotulo; *rotulo != NULL; rotulo++){ // passando por cada lista de rotulos predefinidos
+        for(rotulo = obj->rotulos; *rotulo != NULL; rotulo++){ // passando por cada lista de rotulos predefinidos
             if(strcasecmp(*rotulo, substantivo) == 0)
                 return true;
         }
@@ -38,7 +38,7 @@ tObjetos *visivel_existe(const char *intencao, const char *substantivo) {
         }
     } else if(obj == &substantivo_ambiguo){
         printf("Por favor, especifique a qual %s voce se refere.\n", substantivo);
-        obj == NULL;
+        obj = NULL;
     }
 
     return obj;
@@ -61,9 +61,9 @@ tObjetos *pega_possesao(tObjetos *origem, const char *verbo, const char *substan
 
     } else if(obj == &substantivo_ambiguo){
         printf("Por favor, especifique qual %s você quer %s.\n", substantivo, verbo);
-        obj == NULL;
+        obj = NULL;
     } else if(obj == origem) {
-        printf("Voce não deveria fazer isso com %s.\n", obj->rotulo);
+        printf("Voce não deveria fazer isso com %s.\n", obj->descricao);
         obj = NULL;
     }
     return obj;
