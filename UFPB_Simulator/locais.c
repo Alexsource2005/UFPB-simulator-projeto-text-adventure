@@ -5,14 +5,17 @@
 #include "objetos.h"
 #include "misc.h"
 #include "substantivo.h"
+#include "comparar.h"
 
-void exec_olhar(const char* substantivo) {
+bool exec_olhar_aoredor(void){
+    printf("Você está em %s.\n", player->local->descricao);
+    lista_objetos_presentes(player->local);
+    return true;
+}
+
+bool exec_olhar(void) {
     setlocale(LC_ALL, " ");
-    if(substantivo != NULL && strcasecmp(substantivo, "ao redor") == 0) { //verifica se o usuário quer olhar ao redor
-        printf("Você está em %s", player->local->descricao);
-        lista_objetos_presentes(player->local);
-    } else {
-        tObjetos *obj = visivel_existe("Oque voce quer olhar", substantivo);
+        tObjetos *obj = visivel_existe("Oque voce quer olhar", parametros[0]);
 
         switch(pega_distancia(player, obj)){
         case dist_AquiContido:
@@ -24,7 +27,7 @@ void exec_olhar(const char* substantivo) {
             break;
 
         case dist_NaoAqui:
-            printf("Você não vê nenhum %s aqui.\n", substantivo);
+            printf("Você não vê nenhum %s aqui.\n", parametros[0]);
             break;
 
         case dist_objetoNaoReconhecido:
@@ -36,21 +39,22 @@ void exec_olhar(const char* substantivo) {
             lista_objetos_presentes(obj);
 
         }
-    }
+    return true;
 }
+
 
 static void mover_jogador(tObjetos *passagem){
     printf("%s\n", passagem->texto_GO);
     if(passagem->destino != NULL) {
         player->local = passagem->destino;
         printf("\n");
-        exec_olhar("ao redor");
+        exec_olhar_aoredor();
     }
 }
 
-void exec_ir(const char* substantivo) {
+bool exec_ir(void) {
     setlocale(LC_ALL, " ");
-    tObjetos *obj = visivel_existe("Onde voce quer ir ", substantivo); //tentar colocar um while aqui pra testar
+    tObjetos *obj = visivel_existe("Onde voce quer ir ", parametros[0]); //tentar colocar um while aqui pra testar
 
     switch(pega_distancia(player, obj)){
     case dist_AliDoLado:
@@ -58,7 +62,7 @@ void exec_ir(const char* substantivo) {
         break;
 
     case dist_NaoAqui:
-        printf("Voce não vê nenhum %s aqui.\n", substantivo);
+        printf("Voce não vê nenhum %s aqui.\n", parametros[0]);
         break;
 
     case dist_objetoNaoReconhecido:
@@ -68,4 +72,5 @@ void exec_ir(const char* substantivo) {
     default:
         mover_jogador(obj);
     }
+    return true;
 }
