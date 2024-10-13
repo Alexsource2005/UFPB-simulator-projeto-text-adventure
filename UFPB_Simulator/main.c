@@ -14,6 +14,7 @@ int main()
 {
     setlocale(LC_ALL, "portuguese");
     printf("Bem-vindo ao nosso exemplo na UFPB!\n");
+
     while(comparaeExecuta(comando) && pegar_comando());
     printf("Tchau tchau!\n");
     return 0;

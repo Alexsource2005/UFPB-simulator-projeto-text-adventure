@@ -1,0 +1,10 @@
+digraph map {
+	CI -> Liepe
+	Liepe -> CI
+	Liepe -> CTDR
+	CTDR -> Liepe
+	Liepe -> AIDS
+	AIDS -> Liepe
+	Liepe -> banheiro
+	banheiro -> Liepe
+}

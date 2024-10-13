@@ -5,32 +5,32 @@
 #include "misc.h"
 #include "comparar.h"
 
-const char *parametros[MAX_PARAMS]; //Declara um array que armazenar√° par√¢metros correspondentes aos comandos.
+const char *parametros[MAX_PARAMS]; //Declara um array que armazenar· par‚metros correspondentes aos comandos.
 
-static const char *pula_espacos(const char *source) { //Essa fun√ß√£o avan√ßa o ponteiro src at√© o pr√≥ximo caractere n√£o-espa√ßo, ignorando espa√ßos em branco no in√≠cio.
+static const char *pula_espacos(const char *source) { //Essa funÁ„o avanÁa o ponteiro src atÈ o prÛximo caractere n„o-espaÁo, ignorando espaÁos em branco no inÌcio.
     while(isspace(*source))
         source++;
     return source;
 }
 
-static const char *compara_espacos(const char *source){ //Verifica se o caractere atual √© um espa√ßo ou se chegou ao fim da string. Se for um espa√ßo ou fim, chama skipSpaces para continuar.
+static const char *compara_espacos(const char *source){ //Verifica se o caractere atual È um espaÁo ou se chegou ao fim da string. Se for um espaÁo ou fim, chama skipSpaces para continuar.
     return *source == '\0' || isspace(*source) ? pula_espacos(source) : NULL;
 }
 
 static const char *compara_terminal(const char *source, char terminal){ //Compara o caractere atual de src com um caractere terminal (terminal).
-                                                                        //Se for um espa√ßo, usa matchSpaces. Caso contr√°rio, compara os caracteres de forma case-insensitive
+                                                                        //Se for um espaÁo, usa matchSpaces. Caso contr·rio, compara os caracteres de forma case-insensitive
     return terminal == ' ' ? compara_espacos(source) :
         tolower(*source) == tolower(terminal) ? source + 1 : NULL;
  }
 
-static const char *compara_rotulo(const char *source, const char *rotulo, bool no_final) {  //Compara uma sequ√™ncia de caracteres (tag) com a string src. Avan√ßa src enquanto os caracteres coincidirem. Se chegar ao fim da tag e ainda houver caracteres n√£o tratados em src (dependendo do par√¢metro atEnd), retorna NULL.
+static const char *compara_rotulo(const char *source, const char *rotulo, bool no_final) {  //Compara uma sequÍncia de caracteres (tag) com a string src. AvanÁa src enquanto os caracteres coincidirem. Se chegar ao fim da tag e ainda houver caracteres n„o tratados em src (dependendo do par‚metro atEnd), retorna NULL.
     while(source != NULL && *rotulo != '\0'){
         source = compara_terminal(source, *rotulo++);
     }
     return no_final && source != NULL && *pula_espacos(source) != '\0' ? NULL : source;
 }
 
-static const char *compara_parametro(const char *source, const char **param, bool solto) { //Esta fun√ß√£o verifica os par√¢metros de entrada contra uma lista de objetos (que podem ser comandos ou elementos). Ela itera pelos objetos e suas tags, procurando por correspond√™ncias. Se encontrar uma tag que corresponda a src, atualiza o par√¢metro correspondente.
+static const char *compara_parametro(const char *source, const char **param, bool solto) { //Esta funÁ„o verifica os par‚metros de entrada contra uma lista de objetos (que podem ser comandos ou elementos). Ela itera pelos objetos e suas tags, procurando por correspondÍncias. Se encontrar uma tag que corresponda a src, atualiza o par‚metro correspondente.
     const char *fim_de_source = solto ? source + strlen(source) : NULL;
     tObjetos *obj;
 
@@ -50,13 +50,13 @@ static const char *compara_parametro(const char *source, const char **param, boo
     return fim_de_source;
 }
 
-bool compara_comando(const char *source, const char *padrao) { //compara um comando (src) com um padr√£o (pattern).
+bool compara_comando(const char *source, const char *padrao) { //compara um comando (src) com um padr„o (pattern).
     const char **param;
-    for(param = parametros; param < parametros + MAX_PARAMS; param++) //Inicializa todos os par√¢metros em params como strings vazias
+    for(param = parametros; param < parametros + MAX_PARAMS; param++) //Inicializa todos os par‚metros em params como strings vazias
         *param = "";
 
-    for(source = pula_espacos(source); source != NULL && *padrao != '\0'; padrao++){ //Ignora espa√ßos iniciais em src e ent√£o itera sobre cada caractere em pattern
-        source = isupper(*padrao) ? compara_parametro(source, parametro_por_letra(*padrao), padrao[1]=='\0') : compara_terminal(source, *padrao); //Se o caractere em pattern for uma letra mai√∫scula, chama matchParam para verificar se h√° um par√¢metro correspondente; caso contr√°rio, chama matchTerminal para comparar diretamente.
+    for(source = pula_espacos(source); source != NULL && *padrao != '\0'; padrao++){ //Ignora espaÁos iniciais em src e ent„o itera sobre cada caractere em pattern
+        source = isupper(*padrao) ? compara_parametro(source, parametro_por_letra(*padrao), padrao[1]=='\0') : compara_terminal(source, *padrao); //Se o caractere em pattern for uma letra mai˙scula, chama matchParam para verificar se h· um par‚metro correspondente; caso contr·rio, chama matchTerminal para comparar diretamente.
     }
-    return source != NULL && *pula_espacos(source) == '\0'; //No final, verifica se n√£o restaram caracteres n√£o processados em src, retornando true se todos os espa√ßos foram tratados corretamente e se o comando foi reconhecido.
+    return source != NULL && *pula_espacos(source) == '\0'; //No final, verifica se n„o restaram caracteres n„o processados em src, retornando true se todos os espaÁos foram tratados corretamente e se o comando foi reconhecido.
 }

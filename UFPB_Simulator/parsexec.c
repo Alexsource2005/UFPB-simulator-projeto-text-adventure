@@ -1,4 +1,4 @@
-#include <ctype.h> //usaremos a funÃ§Ã£o "isspace()" para fazer um teste mais apurado. isspace() retorna 0 se o caractere passado NÃƒO FOR um espaÃ§o vazio
+#include <ctype.h> //usaremos a função "isspace()" para fazer um teste mais apurado. isspace() retorna 0 se o caractere passado NÃO FOR um espaço vazio
 #include <stdio.h>
 #include <stdbool.h>
 #include "objetos.h"
@@ -12,7 +12,7 @@ typedef struct {
     const char *padrao;
     bool (*funcao)(void);
 
-} tComando; // vai servir pra ligar um padrÃ£o de comando com uma funÃ§Ã£o de execuÃ§Ã£o especifica
+} tComando; // vai servir pra ligar um padrão de comando com uma função de execução especifica
 
 static bool exec_sair(void){
     return false;
@@ -24,12 +24,12 @@ static bool exec_sem_padrao(void){
 
     for(len = 0; source[len] != '\0' && !isspace(source[len]); len++); //calcula o tamanho da primeira palavra escrita pelo jogador (verbo)
     if(len > 0)
-        printf("Eu nÃ£o sei como %.*s.", len, source); //%.*s permite que antes do parametro de string coloquemos um nÃºmero inteiro que limite o nÃºmero mÃ¡xximo de caracteres
+        printf("Eu não sei como %.*s.", len, source); //%.*s permite que antes do parametro de string coloquemos um número inteiro que limite o número máxximo de caracteres
     return true;
 }
 
 bool comparaeExecuta(char *comando){
-    static const tComando lista_comando[] = //lista de padrÃµes, para adicionar sinonimos, sÃ³ adicionar e ligar a mesma funÃ§Ã£o jÃ¡ existente
+    static const tComando lista_comando[] = //lista de padrões, para adicionar sinonimos, só adicionar e ligar a mesma função já existente
     {
         {"sair", exec_sair},
         {"olhar", exec_olhar_aoredor},

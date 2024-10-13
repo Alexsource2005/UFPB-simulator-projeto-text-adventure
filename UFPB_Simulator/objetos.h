@@ -1,16 +1,16 @@
 
 typedef struct objeto {
     const char *descricao;
-    const char **rotulos; // agora ser√° uma lista de r√≥tulos possiveis para cada objeto
+    const char **rotulos; // agora ser· uma lista de rÛtulos possiveis para cada objeto
     struct objeto *local; //ponteiro para o local onde o objeto se encontra
     struct objeto *destino; // exclusivo das passagens de local a local
-    struct objeto *aparente; // exclusivo para passagens que levam a locais inesperados ou que ser√£o bloqueados
-    const char *detalhes; // detalhes que aparecer√£o ao examinar um objeto de perto
-    const char *conteudo; // para objetos que ir√£o conter outro objeto
-    const char *texto_GO; //mensagem fofa √∫nica para cada local
+    struct objeto *aparente; // exclusivo para passagens que levam a locais inesperados ou que ser„o bloqueados
+    const char *detalhes; // detalhes que aparecer„o ao examinar um objeto de perto
+    const char *conteudo; // para objetos que ir„o conter outro objeto
+    const char *texto_GO; //mensagem fofa ˙nica para cada local
     int peso; // peso de cada objeto
     int capacidade; // capacidade de carga de cada ator
-    int vida; //n√£o sei se ser√° necess√°rio, mas bora
+    int vida; //n„o sei se ser· necess·rio, mas bora
     void (*abrir)(void);
     void (*fechar) (void);
 } tObjetos;

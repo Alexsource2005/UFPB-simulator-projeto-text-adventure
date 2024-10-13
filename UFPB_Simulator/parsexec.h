@@ -1,3 +1,3 @@
 #include <locale.h>
 
-extern bool comparaeExecuta(char *input);
+extern bool comparaeExecuta(const char *input);

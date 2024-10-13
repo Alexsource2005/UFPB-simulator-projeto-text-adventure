@@ -3,7 +3,7 @@
 #include "objetos.h"
 #include "misc.h"
 
-bool esta_segurando(tObjetos *container, tObjetos *obj) { //uma funÃ§Ã£o auxiliar para indicar se um objeto estÃ¡ contido em algum lugar (jogador ou uma bolsa)
+bool esta_segurando(tObjetos *container, tObjetos *obj) { //uma função auxiliar para indicar se um objeto está contido em algum lugar (jogador ou uma bolsa)
     return obj != NULL && obj->local == container;
 }
 
@@ -66,5 +66,5 @@ int lista_objetos_presentes(tObjetos *local_atual) {
          printf("- %s\n", obj->descricao);
       }
    }
-    return cont; // retorna o nÃºmero de objetos no local
+    return cont; // retorna o número de objetos no local
 }

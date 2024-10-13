@@ -8,7 +8,7 @@
 #include "comparar.h"
 
 bool exec_olhar_aoredor(void){
-    printf("VocÃª estÃ¡ em %s.\n", player->local->descricao);
+    printf("Você está em %s.\n", player->local->descricao);
     lista_objetos_presentes(player->local);
     return true;
 }
@@ -27,11 +27,11 @@ bool exec_olhar(void) {
             break;
 
         case dist_NaoAqui:
-            printf("VocÃª nÃ£o vÃª nenhum %s aqui.\n", parametros[0]);
+            printf("Você não vê nenhum %s aqui.\n", parametros[0]);
             break;
 
         case dist_objetoNaoReconhecido:
-            // jÃ¡ vai ser resolvido pela funÃ§Ã£o "visivel_existe"
+            // já vai ser resolvido pela função "visivel_existe"
             break;
 
         default:
@@ -62,11 +62,11 @@ bool exec_ir(void) {
         break;
 
     case dist_NaoAqui:
-        printf("Voce nÃ£o vÃª nenhum %s aqui.\n", parametros[0]);
+        printf("Voce não vê nenhum %s aqui.\n", parametros[0]);
         break;
 
     case dist_objetoNaoReconhecido:
-        // a funÃ§Ã£o visivel_existe jÃ¡ lida com esse caso
+        // a função visivel_existe já lida com esse caso
         break;
 
     default:

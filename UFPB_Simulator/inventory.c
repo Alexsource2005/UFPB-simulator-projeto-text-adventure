@@ -8,30 +8,30 @@
 #include "comparar.h"
 
 bool exec_pegar(void){
-    tObjetos *obj = visivel_existe("Oque voce quer pegar", parametros[0]); //verificar se o objeto existe no sistema e se Ã© visivel ao jogador
+    tObjetos *obj = visivel_existe("Oque voce quer pegar", parametros[0]); //verificar se o objeto existe no sistema e se é visivel ao jogador
 
     switch(pega_distancia(player, obj))
     {
     case dist_SiProprio:
-        printf("VocÃª nÃ£o deveria fazer isso com vocÃª mesmo.\n");
+        printf("Você não deveria fazer isso com você mesmo.\n");
         break;
 
     case dist_Posse:
-        printf("VocÃª jÃ¡ tem %s em seus bolsos.\n", obj->descricao);
+        printf("Você já tem %s em seus bolsos.\n", obj->descricao);
         break;
 
     case dist_AliDoLado:
-        printf("TÃ¡ muito longe, se aproxime para poder pegar.\n");
+        printf("Tá muito longe, se aproxime para poder pegar.\n");
         break;
 
     case dist_objetoNaoReconhecido:
-        // a funÃ§Ã£o visivel_existe jÃ¡ lida com isso
+        // a função visivel_existe já lida com isso
       break;
 
     default:
-        if (obj->local != NULL && obj->local->vida > 0) //condiÃ§Ã£o de ter vida maior que 0 identifica se o local que o objeto se encontra Ã© um NPC
+        if (obj->local != NULL && obj->local->vida > 0) //condição de ter vida maior que 0 identifica se o local que o objeto se encontra é um NPC
       {
-         printf("VocÃª deveria pedir ao %s antes de pegar algo que nÃ£o te pertence.\n", obj->local->descricao);
+         printf("Você deveria pedir ao %s antes de pegar algo que não te pertence.\n", obj->local->descricao);
       }
       else
       {
@@ -45,9 +45,9 @@ bool exec_pegar(void){
 
 bool exec_jogar(void){
     if(player->local == AIDS)
-        mover_objeto(pega_possesao(player, "jogar", parametros[0]), AIDS); //sÃ³ pra jogar algo na fossa (pedras)
+        mover_objeto(pega_possesao(player, "jogar", parametros[0]), AIDS); //só pra jogar algo na fossa (pedras)
     else
-        printf("NÃ£o tem local adequado para jogar esse objeto.\n");
+        printf("Não tem local adequado para jogar esse objeto.\n");
     return true;
 }
 
@@ -66,7 +66,7 @@ bool exec_inventario(void)
 {
    if (lista_objetos_presentes(player) == 0)
    {
-      printf("VocÃª nÃ£o tem nada nos bolsos.\n");
+      printf("Você não tem nada nos bolsos.\n");
    }
    return true;
 }

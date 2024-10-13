@@ -15,31 +15,31 @@ static int peso_dos_conteudos(tObjetos *container) {
 
 static void descreve_movimento(tObjetos *obj, tObjetos *destino) {
     if (destino == player->local) {
-        printf("VocÃª jogou %s na fossa.\n", obj->descricao);
+        printf("Você jogou %s na fossa.\n", obj->descricao);
 
     } else if (destino != player) {
-        printf(destino->vida > 0 ? "VocÃª dÃ¡ %s para %s.\n" : "VocÃª coloca %s no %s.\n", obj->descricao, destino->descricao);
+        printf(destino->vida > 0 ? "Você dá %s para %s.\n" : "Você coloca %s no %s.\n", obj->descricao, destino->descricao);
 
     } else if(obj->local == player->local) {
-        printf("VocÃª pegou %s.\n", obj->descricao);
+        printf("Você pegou %s.\n", obj->descricao);
 
     } else {
-        printf("VocÃª pega %s do %s.\n", obj->descricao, obj->local->descricao);
+        printf("Você pega %s do %s.\n", obj->descricao, obj->local->descricao);
     }
 }
 
 
 void mover_objeto(tObjetos *obj, tObjetos *destino) {
     if (obj == NULL) {
-        printf("Objeto nÃ£o encontrado para mover.\n");
+        printf("Objeto não encontrado para mover.\n");
         return; // Retorna imediatamente se obj for NULL
 
     } else if (destino == NULL) {
-        printf("NÃ£o tem ninguÃ©m aqui para dar isto.\n");
+        printf("Não tem ninguém aqui para dar isto.\n");
         return; // Retorna se destino for NULL
 
     } else if(obj->peso > destino->capacidade){
-        printf("Isso Ã© muito pesado pra carregar.\n");
+        printf("Isso é muito pesado pra carregar.\n");
 
     } else if(obj->peso + peso_dos_conteudos(destino) > destino->capacidade){
         printf("Isso excederia a capacidade.\n");

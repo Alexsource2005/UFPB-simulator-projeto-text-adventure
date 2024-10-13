@@ -11,14 +11,14 @@ static void troca_locais(const char *verbo1, tObjetos *obj1, const char *verbo2,
     obj2->local = tmp;
 
     if(verbo != NULL)
-        printf("Voc√™ %s %s.\n", verbo, obj->descricao);
+        printf("VocÍ %s %s.\n", verbo, obj->descricao);
 }
 
-void nao_pode_ser_aberto(void)    { printf("Isso n√£o pode ser aberto.\n");    }
-void nao_pode_ser_fechado(void)    { printf("Isso n√£o pode ser fechado.\n");    }
+void nao_pode_ser_aberto(void)    { printf("Isso n„o pode ser aberto.\n");    }
+void nao_pode_ser_fechado(void)    { printf("Isso n„o pode ser fechado.\n");    }
 
-void ja_esta_aberto(void)     { printf("Isso j√° est√° aberto.\n");     }
-void ja_esta_fechado(void)   { printf("Isso j√° est√° fechado.\n");   }
+void ja_esta_aberto(void)     { printf("Isso j· est· aberto.\n");     }
+void ja_esta_fechado(void)   { printf("Isso j· est· fechado.\n");   }
 
 void ainda_esta_aberto(void)       { printf("That is still open.\n");       }
 

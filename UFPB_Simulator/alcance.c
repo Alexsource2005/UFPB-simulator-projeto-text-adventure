@@ -9,12 +9,12 @@ tObjetos *objeto_no_alcance(const char *intencao, const char *substantivo){
 
     switch(pega_distancia(player, obj)) {
     case dist_SiProprio:
-        printf("VocÃª nÃ£o deveria fazer isso consigo mesmo.\n");
+        printf("Você não deveria fazer isso consigo mesmo.\n");
         break;
 
     case dist_PosseContido:
     case dist_AquiContido:
-        printf("VocÃª tem que pegar isso de dentro do %s primeiro.\n", obj->local->descricao);
+        printf("Você tem que pegar isso de dentro do %s primeiro.\n", obj->local->descricao);
         break;
 
     case dist_AliDoLado:
