@@ -1,2 +1,2 @@
-extern void exec_abrir(const char *substantivo);
-extern void exec_fechar(const char *substantivo);
+extern bool exec_abrir(void);
+extern bool exec_fechar(void);
