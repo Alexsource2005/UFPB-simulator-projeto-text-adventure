@@ -2,8 +2,10 @@
 #include <stdbool.h>
 #include <locale.h>
 #include "parsexec.h"
+#include "tutorial.h"
+#include "survive.h"
 
-static char comando[100] = "olhar ao redor";
+static char comando[100] = "tutorial";
 
 static bool pegar_comando(void){
     printf("\n--> ");
@@ -13,9 +15,11 @@ static bool pegar_comando(void){
 int main()
 {
     setlocale(LC_ALL, "portuguese");
-    printf("Bem-vindo ao nosso exemplo na UFPB!\n");
 
-    while(comparaeExecuta(comando) && pegar_comando());
+    // Adicionei uma checagem para saber se o personagem está vivo
+    while(comparaeExecuta(comando) && checkStatus() && pegar_comando())
+        loseSanidade(2); // Cada comando faz você perder sanidade (Pois só o fato de estar nesse local faz vc perder sanidade)
+        system("cls");
     printf("Tchau tchau!\n");
     return 0;
 }

@@ -42,5 +42,8 @@ extern tObjetos lista_objetos[];
 #define block_ctdr	(lista_objetos + 22)
 #define block_aids	(lista_objetos + 23)
 #define block_banheiro	(lista_objetos + 24)
+#define arduino_pronto	(lista_objetos + 25)
+#define chassi	(lista_objetos + 26)
+#define carro_de_combate	(lista_objetos + 27)
 
-#define fim_lista	(lista_objetos + 25)
+#define fim_lista	(lista_objetos + 28)

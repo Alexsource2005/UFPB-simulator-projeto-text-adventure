@@ -1,7 +1,7 @@
 all: success.txt src.zip map.png
 
-C = objetos.c misc.c substantivo.c locais.c movimento.c inventory.c parsexec.c main.c
-H = objetos.h misc.h substantivo.h locais.h movimento.h inventory.h parsexec.h
+C = objetos.c misc.c substantivo.c locais.c movimento.c inventory.c parsexec.c tutorial.c survive.c main.c
+H = objetos.h misc.h substantivo.h locais.h movimento.h inventory.h parsexec.h tutorial.h survive.h
 
 success.txt: UFPB_Simulator.exe testscript.txt baseline.txt
 	./test.sh

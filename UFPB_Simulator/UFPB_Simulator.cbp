@@ -40,6 +40,7 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="alcance.h" />
+		<Unit filename="comandos.txt" />
 		<Unit filename="comparar.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -48,6 +49,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="inventory.h" />
+		<Unit filename="inventory2.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="inventory2.h" />
 		<Unit filename="locais.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -77,10 +82,21 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="substantivo.h" />
+		<Unit filename="survive.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="survive.h" />
 		<Unit filename="toggle.c">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="toggle.h" />
+		<Unit filename="tutorial.c">
+			<Option compilerVar="CC" />
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="tutorial.h">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

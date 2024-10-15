@@ -54,7 +54,7 @@ static void mover_jogador(tObjetos *passagem){
 
 bool exec_ir(void) {
     setlocale(LC_ALL, " ");
-    tObjetos *obj = visivel_existe("Onde voce quer ir ", parametros[0]); //tentar colocar um while aqui pra testar
+    tObjetos *obj = visivel_existe("Onde voce quer ir ", parametros[0]);
 
     switch(pega_distancia(player, obj)){
     case dist_AliDoLado:

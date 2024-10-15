@@ -6,6 +6,7 @@
 #include "substantivo.h"
 #include "movimento.h"
 #include "comparar.h"
+#include "survive.h"
 
 bool exec_pegar(void){
     tObjetos *obj = visivel_existe("Oque voce quer pegar", parametros[0]); //verificar se o objeto existe no sistema e se é visivel ao jogador
@@ -44,8 +45,10 @@ bool exec_pegar(void){
 
 
 bool exec_jogar(void){
-    if(player->local == AIDS)
+    if(player->local == AIDS){
         mover_objeto(pega_possesao(player, "jogar", parametros[0]), AIDS); //só pra jogar algo na fossa (pedras)
+        // Adicionar sanidade (quantidade pode ser mudada do jeito que preferir)
+        addSanidade(30);}
     else
         printf("Não tem local adequado para jogar esse objeto.\n");
     return true;

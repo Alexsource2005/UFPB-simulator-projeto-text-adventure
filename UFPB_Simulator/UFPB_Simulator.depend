@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1728077975 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\main.c
+1728952277 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\main.c
 	<stdio.h>
 	<stdbool.h>
 	<locale.h>
 	"parsexec.h"
 
-1728690414 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\parsexec.c
+1728909653 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\parsexec.c
 	<ctype.h>
 	<stdio.h>
 	<stdbool.h>
@@ -14,12 +14,13 @@
 	"comparar.h"
 	"locais.h"
 	"inventory.h"
+	"inventory2.h"
 	"abrir_fechar.h"
 
 1728688528 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\parsexec.h
 	<locale.h>
 
-1728699998 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\locais.c
+1728842721 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\locais.c
 	<stdbool.h>
 	<stdio.h>
 	<string.h>
@@ -31,12 +32,12 @@
 
 1728699704 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\locais.h
 
-1728682600 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\objetos.c
+1728833199 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\objetos.c
 	<stdio.h>
 	"objetos.h"
 	"toggle.h"
 
-1728682599 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\objetos.h
+1728955526 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\objetos.h
 
 1728665724 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\misc.c
 	<stdio.h>
@@ -70,7 +71,7 @@
 
 1728699685 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\inventory.h
 
-1728663039 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\movimento.c
+1728832466 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\movimento.c
 	<stdbool.h>
 	<stdio.h>
 	"objetos.h"
@@ -101,7 +102,7 @@
 
 1728699685 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\abrir_fechar.h
 
-1728700436 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\comparar.c
+1728839916 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\comparar.c
 	<ctype.h>
 	<stdbool.h>
 	<string.h>
@@ -110,4 +111,158 @@
 	"comparar.h"
 
 1728699685 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\comparar.h
+
+1728832253 source:c:\users\alessandra\documents\codeblock projects\ufpb_simulator\inventory2.c
+	<stdbool.h>
+	<stdio.h>
+	"objetos.h"
+	"comparar.h"
+	"movimento.h"
+	"alcance.h"
+	"substantivo.h"
+
+1728832235 c:\users\alessandra\documents\codeblock projects\ufpb_simulator\inventory2.h
+
+1728699685 source:c:\users\tavin\documents\coding\ufpb_simulator\abrir_fechar.c
+	<stdio.h>
+	<stdbool.h>
+	"objetos.h"
+	"alcance.h"
+	"comparar.h"
+
+1729028171 c:\users\tavin\documents\coding\ufpb_simulator\objetos.h
+
+1728681463 c:\users\tavin\documents\coding\ufpb_simulator\alcance.h
+
+1728699685 c:\users\tavin\documents\coding\ufpb_simulator\comparar.h
+
+1728682762 source:c:\users\tavin\documents\coding\ufpb_simulator\alcance.c
+	<stdio.h>
+	<stdbool.h>
+	"objetos.h"
+	"misc.h"
+	"substantivo.h"
+
+1728408229 c:\users\tavin\documents\coding\ufpb_simulator\misc.h
+	<stdbool.h>
+
+1728140989 c:\users\tavin\documents\coding\ufpb_simulator\substantivo.h
+
+1728839916 source:c:\users\tavin\documents\coding\ufpb_simulator\comparar.c
+	<ctype.h>
+	<stdbool.h>
+	<string.h>
+	"objetos.h"
+	"misc.h"
+	"comparar.h"
+
+1729034079 source:c:\users\tavin\documents\coding\ufpb_simulator\inventory.c
+	<stdio.h>
+	<stdbool.h>
+	<string.h>
+	"objetos.h"
+	"misc.h"
+	"substantivo.h"
+	"movimento.h"
+	"comparar.h"
+	"survive.h"
+
+1728138666 c:\users\tavin\documents\coding\ufpb_simulator\movimento.h
+
+1729028995 source:c:\users\tavin\documents\coding\ufpb_simulator\inventory2.c
+	<stdbool.h>
+	<stdio.h>
+	"objetos.h"
+	"comparar.h"
+	"movimento.h"
+	"alcance.h"
+	"substantivo.h"
+
+1728842721 source:c:\users\tavin\documents\coding\ufpb_simulator\locais.c
+	<stdbool.h>
+	<stdio.h>
+	<string.h>
+	<locale.h>
+	"objetos.h"
+	"misc.h"
+	"substantivo.h"
+	"comparar.h"
+
+1729034052 source:c:\users\tavin\documents\coding\ufpb_simulator\main.c
+	<stdio.h>
+	<stdbool.h>
+	<locale.h>
+	"parsexec.h"
+	"tutorial.h"
+	"survive.h"
+
+1729021899 c:\users\tavin\documents\coding\ufpb_simulator\parsexec.h
+	<locale.h>
+
+1728665724 source:c:\users\tavin\documents\coding\ufpb_simulator\misc.c
+	<stdio.h>
+	<stdbool.h>
+	"objetos.h"
+	"misc.h"
+
+1728832466 source:c:\users\tavin\documents\coding\ufpb_simulator\movimento.c
+	<stdbool.h>
+	<stdio.h>
+	"objetos.h"
+	"misc.h"
+
+1729028169 source:c:\users\tavin\documents\coding\ufpb_simulator\objetos.c
+	<stdio.h>
+	"objetos.h"
+	"toggle.h"
+
+1728678578 c:\users\tavin\documents\coding\ufpb_simulator\toggle.h
+
+1729034052 source:c:\users\tavin\documents\coding\ufpb_simulator\parsexec.c
+	<ctype.h>
+	<stdio.h>
+	<stdbool.h>
+	"objetos.h"
+	"misc.h"
+	"comparar.h"
+	"locais.h"
+	"inventory.h"
+	"inventory2.h"
+	"abrir_fechar.h"
+	"tutorial.h"
+	"survive.h"
+
+1728699704 c:\users\tavin\documents\coding\ufpb_simulator\locais.h
+
+1728699685 c:\users\tavin\documents\coding\ufpb_simulator\inventory.h
+
+1729028995 c:\users\tavin\documents\coding\ufpb_simulator\inventory2.h
+
+1728699685 c:\users\tavin\documents\coding\ufpb_simulator\abrir_fechar.h
+
+1728612451 source:c:\users\tavin\documents\coding\ufpb_simulator\substantivo.c
+	<stdbool.h>
+	<stdio.h>
+	<string.h>
+	"objetos.h"
+	"misc.h"
+
+1728683303 source:c:\users\tavin\documents\coding\ufpb_simulator\toggle.c
+	<stdio.h>
+	<stdbool.h>
+	"objetos.h"
+
+1729029970 c:\users\tavin\documents\coding\ufpb_simulator\tutorial.h
+
+1729030433 source:c:\users\tavin\documents\coding\ufpb_simulator\tutorial.c
+	<stdio.h>
+	<stdbool.h>
+	"objetos.h"
+	"tutorial.h"
+
+1728881483 c:\users\tavin\documents\coding\ufpb_simulator\survive.h
+
+1729034314 source:c:\users\tavin\documents\coding\ufpb_simulator\survive.c
+	<stdio.h>
+	<stdbool.h>
 

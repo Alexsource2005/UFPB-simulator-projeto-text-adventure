@@ -30,20 +30,33 @@ static void descreve_movimento(tObjetos *obj, tObjetos *destino) {
 
 
 void mover_objeto(tObjetos *obj, tObjetos *destino) {
-    if (obj == NULL) {
+    if (obj == NULL)
+    {
         printf("Objeto não encontrado para mover.\n");
         return; // Retorna imediatamente se obj for NULL
 
-    } else if (destino == NULL) {
+    }
+    else if (destino == NULL)
+    {
         printf("Não tem ninguém aqui para dar isto.\n");
         return; // Retorna se destino for NULL
 
-    } else if(obj->peso > destino->capacidade){
+    }
+    else if(destino->capacidade == 0)
+    {
+        printf("Isso não encaixa direito aqui.");
+    }
+    else if(obj->peso > destino->capacidade)
+    {
         printf("Isso é muito pesado pra carregar.\n");
 
-    } else if(obj->peso + peso_dos_conteudos(destino) > destino->capacidade){
+    }
+    else if(obj->peso + peso_dos_conteudos(destino) > destino->capacidade)
+    {
         printf("Isso excederia a capacidade.\n");
-    } else {
+    }
+    else
+    {
         descreve_movimento(obj, destino);
         obj->local = destino; // Move o objeto para o novo destino
     }

@@ -1,0 +1,6 @@
+Comando para gerar arquivos objetos.c e objetos.h:
+
+
+awk -v pass=h  -f objetos.awk objetos.txt >  objetos.h
+awk -v pass=c1 -f objetos.awk objetos.txt >  objetos.c
+awk -v pass=c2 -f objetos.awk objetos.txt >> objetos.c

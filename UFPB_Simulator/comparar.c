@@ -31,6 +31,7 @@ static const char *compara_rotulo(const char *source, const char *rotulo, bool n
 }
 
 static const char *compara_parametro(const char *source, const char **param, bool solto) { //Esta função verifica os parâmetros de entrada contra uma lista de objetos (que podem ser comandos ou elementos). Ela itera pelos objetos e suas tags, procurando por correspondências. Se encontrar uma tag que corresponda a src, atualiza o parâmetro correspondente.
+    // "solto" é uma variável que diz se oque o jogador escreveu é uma tag válida ou não. Se for falsa, ele será tratado como uma string vazia
     const char *fim_de_source = solto ? source + strlen(source) : NULL;
     tObjetos *obj;
 
@@ -55,8 +56,11 @@ bool compara_comando(const char *source, const char *padrao) { //compara um coma
     for(param = parametros; param < parametros + MAX_PARAMS; param++) //Inicializa todos os parâmetros em params como strings vazias
         *param = "";
 
-    for(source = pula_espacos(source); source != NULL && *padrao != '\0'; padrao++){ //Ignora espaços iniciais em src e então itera sobre cada caractere em pattern
-        source = isupper(*padrao) ? compara_parametro(source, parametro_por_letra(*padrao), padrao[1]=='\0') : compara_terminal(source, *padrao); //Se o caractere em pattern for uma letra maiúscula, chama matchParam para verificar se há um parâmetro correspondente; caso contrário, chama matchTerminal para comparar diretamente.
+    for(source = pula_espacos(source); source != NULL && *padrao != '\0'; padrao++)
+    { //Ignora espaços iniciais em src e então itera sobre cada caractere em pattern
+        source = isupper(*padrao) ? // "isupper" verifica se o caractere do padrão é um não-terminal "variável sintática
+            compara_parametro(source, parametro_por_letra(*padrao), padrao[1]=='\0') :
+                compara_terminal(source, *padrao);
     }
     return source != NULL && *pula_espacos(source) == '\0'; //No final, verifica se não restaram caracteres não processados em src, retornando true se todos os espaços foram tratados corretamente e se o comando foi reconhecido.
 }

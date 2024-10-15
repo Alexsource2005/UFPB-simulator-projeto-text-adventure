@@ -59,7 +59,7 @@ extern tObjetos lista_objetos[];
 
 - jovem
      descricao  "um jovem magricela com uma sacola de cacarecos"
-     rotulos    "jovem", "ao jovem", "com o jovem", "jovem magricela", "ao jovem magricela", "com o jovem magricela"
+     rotulos    "jovem", "o jovem", "ao jovem", "com o jovem", "jovem magricela", "ao jovem magricela", "com o jovem magricela"
      local      AIDS
      detalhes   "O jovem está em completo silêncio encarando a fossa, hipnotizado. \nTalvez, ele esteja disposto a te dar algo útil."
      conteudo   "Ele tem"
@@ -215,3 +215,24 @@ extern tObjetos lista_objetos[];
      local      banheiro
      detalhes   "É só um banheiro, não tem nada além disso."
      texto_GO   "Você dá de cara com a parede. Deixa de ser besta."
+
+- arduino_pronto
+    descricao   "Um arduino UNO pronto pra ser usado"
+    rotulos     "arduino", "arduino pronto"
+    local       NULL
+    detalhes    "Este arduino está pronto pra ser usado em meu projeto."
+    peso        1
+
+- chassi
+     descricao  "um chassi robusto"
+     rotulos    "chassi", "estrutura"
+     local      NULL
+     detalhes   "Um chassi bem construído, pronto para ser a base de um carro de combate."
+     peso       2
+
+- carro_de_combate
+     descricao  "um carro de combate impressionante"
+     rotulos    "carro de combate", "carro", "veiculo"
+     local      NULL
+     detalhes   "Um carro de combate completo, combinando um chassi robusto com um arduino programado. É uma obra-prima da engenharia improvisada!"
+     peso       3

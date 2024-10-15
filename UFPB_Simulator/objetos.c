@@ -7,7 +7,7 @@ static const char *tags2[] = { "ao ctdr", "ctdr", NULL};
 static const char *tags3[] = { "ao poco da aids", "poco da aids", NULL};
 static const char *tags4[] = { "ao banheiro", "banheiro", NULL};
 static const char *tags5[] = { "cano pvc", "pvc", "cano", "o cano pvc", "o cano", NULL};
-static const char *tags6[] = { "jovem", "ao jovem", "com o jovem", "jovem magricela", "ao jovem magricela", "com o jovem magricela", NULL};
+static const char *tags6[] = { "jovem", "o jovem", "ao jovem", "com o jovem", "jovem magricela", "ao jovem magricela", "com o jovem magricela", NULL};
 static const char *tags7[] = { "arduino", "o arduino", NULL};
 static const char *tags8[] = { "notebook", "o notebook", NULL};
 static const char *tags9[] = { "voce", "voce mesmo", "si", "si proprio", NULL};
@@ -26,6 +26,9 @@ static const char *tags21[] = { "norte", "nordeste", "noroeste", NULL};
 static const char *tags22[] = { "leste", "norte", "sul", "nordeste", "noroeste", "sudoeste", "sudeste", NULL};
 static const char *tags23[] = { "oeste", "sul", "sudeste","sudoeste", "mato", "mata", "alem", NULL};
 static const char *tags24[] = { "norte", "sul", "leste", "oeste", "nordeste", "noroeste", "sudeste", "sudoeste", NULL};
+static const char *tags25[] = { "arduino", "arduino pronto", NULL};
+static const char *tags26[] = { "chassi", "estrutura", NULL};
+static const char *tags27[] = { "carro de combate", "carro", "veiculo", NULL};
 
 tObjetos lista_objetos[] = {
 	{	/* 0 = CI */
@@ -269,7 +272,7 @@ tObjetos lista_objetos[] = {
 		nao_pode_ser_fechado
 	},
 	{	/* 16 = porta_aberta_para_banheiro */
-		 "A porta aberta que leva ao banheiro",
+		 "a porta aberta que leva ao banheiro",
 		tags16,
 		NULL,
 		 banheiro,
@@ -284,7 +287,7 @@ tObjetos lista_objetos[] = {
 		 troca_porta_banheiro
 	},
 	{	/* 17 = porta_fechada_para_banheiro */
-		 "A porta fechada que leva ao banheiro",
+		 "a porta fechada que leva ao banheiro",
 		tags17,
 		 Liepe,
 		NULL,
@@ -299,7 +302,7 @@ tObjetos lista_objetos[] = {
 		 ja_esta_fechado
 	},
 	{	/* 18 = porta_aberta_para_liepe */
-		 "A porta aberta que leva ao Liepe",
+		 "a porta aberta que leva ao Liepe",
 		tags18,
 		NULL,
 		 Liepe,
@@ -314,7 +317,7 @@ tObjetos lista_objetos[] = {
 		 troca_porta_liepe
 	},
 	{	/* 19 = porta_fechada_para_liepe */
-		 "A porta fechada que leva ao Liepe",
+		 "a porta fechada que leva ao Liepe",
 		tags19,
 		 banheiro,
 		NULL,
@@ -398,6 +401,51 @@ tObjetos lista_objetos[] = {
 		". Voce ve",
 		 "Você dá de cara com a parede. Deixa de ser besta.",
 		99,
+		0,
+		0,
+		nao_pode_ser_aberto,
+		nao_pode_ser_fechado
+	},
+	{	/* 25 = arduino_pronto */
+		 "Um arduino UNO pronto pra ser usado",
+		tags25,
+		 NULL,
+		NULL,
+		NULL,
+		 "Este arduino está pronto pra ser usado em meu projeto.",
+		". Voce ve",
+		"Voce nao pode se aproximar mais que isso.",
+		 1,
+		0,
+		0,
+		nao_pode_ser_aberto,
+		nao_pode_ser_fechado
+	},
+	{	/* 26 = chassi */
+		 "um chassi robusto",
+		tags26,
+		 NULL,
+		NULL,
+		NULL,
+		 "Um chassi bem construído, pronto para ser a base de um carro de combate.",
+		". Voce ve",
+		"Voce nao pode se aproximar mais que isso.",
+		 2,
+		0,
+		0,
+		nao_pode_ser_aberto,
+		nao_pode_ser_fechado
+	},
+	{	/* 27 = carro_de_combate */
+		 "um carro de combate impressionante",
+		tags27,
+		 NULL,
+		NULL,
+		NULL,
+		 "Um carro de combate completo, combinando um chassi robusto com um arduino programado. É uma obra-prima da engenharia improvisada!",
+		". Voce ve",
+		"Voce nao pode se aproximar mais que isso.",
+		 3,
 		0,
 		0,
 		nao_pode_ser_aberto,
