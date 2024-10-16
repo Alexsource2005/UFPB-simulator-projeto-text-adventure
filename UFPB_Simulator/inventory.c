@@ -36,9 +36,12 @@ bool exec_pegar(void){
       }
       else
       {
-         mover_objeto(obj, player);
+        if (loseEnergia(5)) { // Pegar um objeto consome 5 de energia
+            mover_objeto(obj, player);
+        } else {
+        printf("Você está muito cansado para pegar isso agora.\n");
+        }
       }
-
     }
     return true;
 }

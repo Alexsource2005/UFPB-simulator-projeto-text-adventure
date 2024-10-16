@@ -6,10 +6,19 @@
 #include "misc.h"
 #include "substantivo.h"
 #include "comparar.h"
+#include "survive.h"
+#include <stdlib.h>
 
 bool exec_olhar_aoredor(void){
     printf("Você está em %s.\n", player->local->descricao);
     lista_objetos_presentes(player->local);
+
+    printf("\nSeu status:\n");
+    printf("Energia: %d\n", energia);
+    printf("Sanidade: %d\n", sanidade);
+    printf("Fome: %d\n", fome);
+    printf("Necessidade de ir ao banheiro: %d\n", necessidade_banheiro);
+
     return true;
 }
 
@@ -58,7 +67,38 @@ bool exec_ir(void) {
 
     switch(pega_distancia(player, obj)){
     case dist_AliDoLado:
-        mover_jogador(pega_passagem(player->local, obj));
+        if (energia > 10 && fome < 95) {
+            loseEnergia(6); addFome(5);// Mover-se consome 10 de energia e 5 de fome
+            mover_jogador(pega_passagem(player->local, obj));
+
+            // Chance aleatória de perder sanidade ao se mover
+            if (rand() % 100 < 20) { // 20% de chance
+                loseSanidade(10);
+                printf("Você sente um arrepio ao se mover. Sua sanidade diminuiu um pouco.\n");
+            }
+
+            // Aumenta a necessidade de ir ao banheiro
+            addBanheiro(3);
+
+            // Verifica se o jogador precisa urgentemente ir ao banheiro
+            if (necessidade_banheiro >= 80) {
+                printf("Você está sentindo uma urgência em ir ao banheiro!\n");
+            }
+        } else {
+            printf("Você está muito cansado ou com muita fome para se mover agora.\n");
+            if (energia <= 10) {
+                char resposta[10];
+                printf("Você gostaria de tirar um cochilo rápido para recuperar um pouco de energia? (sim/nao): ");
+                scanf("%s", resposta);
+                if (strcmp(resposta, "sim") == 0) {
+                    energia += 20;
+                    if (energia > 100) energia = 100;
+                    fome += 10;
+                    if (fome > 100) fome = 100;
+                    printf("Você tirou um cochilo rápido. Energia atual: %d, Fome atual: %d\n", energia, fome);
+                }
+            }
+        }
         break;
 
     case dist_NaoAqui:
@@ -70,7 +110,31 @@ bool exec_ir(void) {
         break;
 
     default:
-        mover_jogador(obj);
+        if (energia > 10 && fome < 95) {
+            loseEnergia(6); addFome(5);// Mover-se consome 10 de energia e 5 de fome
+            mover_jogador(obj);
+        } else {
+            printf("Você está muito cansado ou com muita fome para se mover agora.\n");
+            if (energia <= 10) {
+                char resposta[10];
+                printf("Você gostaria de tirar um cochilo rápido para recuperar um pouco de energia? (sim/não): ");
+                scanf("%s", resposta);
+                if (strcmp(resposta, "sim") == 0) {
+                    energia += 20;
+                    if (energia > 100) energia = 100;
+                    fome += 10;
+                    if (fome > 100) fome = 100;
+                    printf("Você tirou um cochilo rápido. Energia atual: %d, Fome atual: %d\n", energia, fome);
+                }
+            }
+        }
     }
+
+    // Verifica o status após o movimento
+    if (!checkStatus()) {
+        printf("Você não consegue mais continuar... Fim de jogo.\n");
+        return false; // Isso encerrará o jogo
+    }
+
     return true;
 }

@@ -156,7 +156,7 @@
 	"misc.h"
 	"comparar.h"
 
-1729034079 source:c:\users\tavin\documents\coding\ufpb_simulator\inventory.c
+1729036612 source:c:\users\tavin\documents\coding\ufpb_simulator\inventory.c
 	<stdio.h>
 	<stdbool.h>
 	<string.h>
@@ -178,7 +178,7 @@
 	"alcance.h"
 	"substantivo.h"
 
-1728842721 source:c:\users\tavin\documents\coding\ufpb_simulator\locais.c
+1729040453 source:c:\users\tavin\documents\coding\ufpb_simulator\locais.c
 	<stdbool.h>
 	<stdio.h>
 	<string.h>
@@ -187,8 +187,10 @@
 	"misc.h"
 	"substantivo.h"
 	"comparar.h"
+	"survive.h"
+	<stdlib.h>
 
-1729034052 source:c:\users\tavin\documents\coding\ufpb_simulator\main.c
+1729041393 source:c:\users\tavin\documents\coding\ufpb_simulator\main.c
 	<stdio.h>
 	<stdbool.h>
 	<locale.h>
@@ -254,15 +256,18 @@
 
 1729029970 c:\users\tavin\documents\coding\ufpb_simulator\tutorial.h
 
-1729030433 source:c:\users\tavin\documents\coding\ufpb_simulator\tutorial.c
+1729041596 source:c:\users\tavin\documents\coding\ufpb_simulator\tutorial.c
 	<stdio.h>
 	<stdbool.h>
 	"objetos.h"
 	"tutorial.h"
 
-1728881483 c:\users\tavin\documents\coding\ufpb_simulator\survive.h
+1729036970 c:\users\tavin\documents\coding\ufpb_simulator\survive.h
+	<stdbool.h>
 
-1729034314 source:c:\users\tavin\documents\coding\ufpb_simulator\survive.c
+1729041151 source:c:\users\tavin\documents\coding\ufpb_simulator\survive.c
 	<stdio.h>
 	<stdbool.h>
+	"objetos.h"
+	<stdlib.h>
 

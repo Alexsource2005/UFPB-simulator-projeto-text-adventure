@@ -92,11 +92,8 @@
 		<Unit filename="toggle.h" />
 		<Unit filename="tutorial.c">
 			<Option compilerVar="CC" />
-			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="tutorial.h">
-			<Option target="&lt;{~None~}&gt;" />
-		</Unit>
+		<Unit filename="tutorial.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
